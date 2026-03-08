@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clgedu | First Customer Enterprise Deal</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --success: #16a34a;
+            --gold: #f59e0b;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 120px 20px 40px;
+            width: 100%;
+        }
+
+        .offer-container {
+            max-width: 1050px;
+            width: 100%;
+            background: var(--surface);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-badge {
+            background: var(--gold);
+            color: #78350f;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-box {
+            background: var(--surface);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .strike-price {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-weight: 600;
+            margin-bottom: -10px;
+        }
+
+        .price {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .price-sub {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: #dcfce7;
+            color: #166534;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: 1px solid #bbf7d0;
+        }
+
+        .tag.blue {
+            background: #dbeafe;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .urgency-text {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .content-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 15px 0;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-card li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .addon-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .addon-sub {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .highlight-banner {
+            background: linear-gradient(to right, #eff6ff, #e0f2fe);
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 40px 0;
+        }
+
+        .highlight-banner h4 {
+            margin: 0 0 10px 0;
+            color: #0369a1;
+            font-size: 1.2rem;
+        }
+
+        .highlight-banner p {
+            margin: 0;
+            color: #0c4a6e;
+            font-size: 0.95rem;
+        }
+
+        .terms-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 5px solid var(--gold);
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        .terms-box strong {
+            color: #78350f;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .price {
+                font-size: 3.5rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="icon" href="../image/Main_Branch_png_logo.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <img src="../image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../services/">Services</a>
+                <a href="../contact-us/">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="offer-container">
+            <div class="header">
+                <div class="header-badge">★ Exclusive Offer ★</div>
+                <h1>clgedu Enterprise Ecosystem</h1>
+                <p>A managed campus ERP. Lock in your foundational pricing before standard commercial rates
+                    apply.</p>
+            </div>
+
+            <div class="pricing-box">
+                <div class="price">₹1,29,999</div>
+                <div class="price-sub">Flat Monthly Fee / Billed Annually</div>
+
+                <div class="tags-container">
+                    <span class="tag">✓ Dedicated Cloud Servers Included</span>
+                    <span class="tag">✓ Full Remote Maintenance Included</span>
+                    <span class="tag blue">🛡️GST Excluding</span>
+                </div>
+
+                <a href="../erp-pricing/" target="_blank" class="cta-button">View Original Pricing</a>
+                <span class="urgency-text">⚠️ If this deal expires, deployment will revert to standard plan
+                    pricing.</span>
+            </div>
+
+            <div class="content-section">
+
+                <div class="section-title">One-Time Onboarding & Deployment</div>
+                <div class="grid-2">
+                    <div class="feature-card" style="border-left: 4px solid var(--accent); background: #f8fafc;">
+                        <div class="addon-price">₹60,000 <span class="addon-sub">/ One-Time</span></div>
+                        <h3 style="margin-top: 10px;">🗄️ Legacy Data Migration</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Complete transfer,
+                            and
+                            structuring of old campus Active Students/Faculty records (Excel/CSV files) securely
+                            into
+                            the
+                            new PostgreSQL database architecture.</p>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid var(--gold); background: #f8fafc;">
+                        <div class="addon-price">₹19,000 <span class="addon-sub">/ Per Visit</span></div>
+                        <h3 style="margin-top: 10px;">👨🏫 On-Site Field Visit & Training</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">In-person,
+                            comprehensive
+                            training workshop for the 600+ faculty and staff members at the campus. (Travel,
+                            accommodation &
+                            logistics billed Excluding).</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Hardware & Capacity Allocation</div>
+                <div class="grid-3">
+                    <div class="feature-card" style="border-color: var(--accent); background: #eff6ff;">
+                        <h3>👥 Massive User Scale</h3>
+                        <ul>
+                            <li><strong>5,000</strong> Max User Capacity</li>
+                            <li><strong>600+</strong> Faculty & Staff Capacity</li>
+                            <li><strong>4,000</strong> Peak Simultaneous Logins</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Premium Cloud Infrastructure</h3>
+                        <ul>
+                            <li><strong>XL Compute Server:</strong> 16 GB RAM for instant Processing</li>
+                            <li><strong>2 TB (2,000 GB)</strong> Monthly Bandwidth</li>
+                            <li><strong>1 TB</strong> Secure File Storage</li>
+                            <li><strong>Max File Upload Size:</strong> Smart compression (Up to 100 KB per file)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🛡️ Security & Reliability</h3>
+                        <ul>
+                            <li>Custom Domain to bypass ISP blocks</li>
+                            <li>Row-Level Security (RLS) Data Protection</li>
+                            <li>Daily Automated Backups</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Comprehensive App Maintenance</div>
+                <div class="grid-3">
+                    <div class="feature-card" style="grid-column: 1 / -1;">
+                        <h3>💻 The Remote Engineering Model</h3>
+                        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 15px;">To ensure maximum
+                            efficiency
+                            and
+                            24/7 server monitoring, the engineering team operates on a strict remote basis. This
+                            eliminates
+                            on-campus IT overhead and space requirements for the college.</p>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <ul>
+                                <li><strong>Lead System Architect:</strong> Handles database queries, server
+                                    health, and
+                                    core logic remotely.</li>
+                                <li><strong>1 Technical Support Assistant:</strong> Dedicated remote helpdesk
+                                    for
+                                    resolving
+                                    campus app queries.</li>
+                                <li><strong>Zero On-Campus Requirement:</strong> All deployment, bug fixes, and
+                                    feature
+                                    updates are pushed Over-The-Air (OTA).</li>
+                            </ul>
+                            <ul>
+                                <li><strong>Continuous Bug Tracking:</strong> Real-time resolving of app
+                                    glitches or UI
+                                    issues.</li>
+                                <li><strong>Query Optimization:</strong> Keeping the database fast as the
+                                    college data
+                                    grows.</li>
+                                <li><strong>No Extra Maintenance Fees:</strong> The ₹1.3L covers all remote
+                                    engineering
+                                    labor and support.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Detailed SLA & Service Commitment</div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <h3>⚡ Software Responsiveness</h3>
+                        <ul>
+                            <li>**Critical Bug Fix:** Within 24 Hours (Guaranteed)</li>
+                            <li>**Minor Bug Fix:** Within 1 Week</li>
+                            <li>**Data Security Patch:** Instant</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📦 Remote Support Included</h3>
+                        <ul>
+                            <li>Video Training Guides: Included</li>
+                            <li>Remote Setup Support: Included</li>
+                            <li>Over-The-Air App Deployments: Included</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚙️ Development & Customization</h3>
+                        <ul>
+                            <li>**20 Hours/Year** Custom Feature Development Credits</li>
+                            <li>Free New Feature Updates: Included</li>
+                            <li>Google Play Developer Fees: Included</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-banner">
+                    <h4>🚀 Expandable Infrastructure Guarantee</h4>
+                    <p>Built to grow with the campus. If data usage exceeds the allocated limits (1 TB storage,
+                        2 TB
+                        bandwidth), the system will not crash. Additional resources are dynamically scalable.
+                        Expanding
+                        limits will be billed dynamically at standard raw cloud provider costs + a flat 50%
+                        technical
+                        management fee.</p>
+                </div>
+
+                <div class="terms-box">
+                    <strong>Terms & Conditions Apply</strong>
+                    A mandatory <strong>12-month minimum commitment</strong> applies. Advance payments are
+                    strictly
+                    non-refundable in the event of early termination. Aditya Divte Production is responsible
+                    strictly
+                    for
+                    remote software architecture and maintenance; no on-campus IT presence is required. While we
+                    ensure
+                    application stability via our SLA, we hold no legal or financial liability for third-party
+                    cloud
+                    outages, raw AWS/Supabase server downtime, or external internet service provider blocks.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="text-gradient">ADITYA DIVTE</span><br>PRODUCTION</h3>
+                    <p>A multidisciplinary production house delivering excellence in Games, Film, Architecture
+                        Visualization, and Technology across India.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../services/">Our Services</a></li>
+                        <li><a href="../contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../services/">Game Development</a></li>
+                        <li><a href="../services/">Cinematic VFX</a></li>
+                        <li><a href="../services/">Web & App Dev</a></li>
+                        <li><a href="../services/">College ERP</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope icon"></i> nerotomedia@gmail.com</p>
+                    <p><i class="fas fa-phone icon"></i> +91 935614061</p>
+                    <p><i class="fas fa-map-marker-alt icon"></i> India</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="../terms.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Terms &
+                        Conditions</a>
+                    <a href="../erp-pricing/" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Pricing
+                        Plan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+    </script>
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
+

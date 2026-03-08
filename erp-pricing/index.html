@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClgEdu Pricing Plans</title>
+
+    <meta name="description" content="View our robust College ERP App pricing plans.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            /* Table Variables */
+            --border-color: #e6e6e6;
+            --text-main: #161616;
+            --text-secondary: #5e5e5e;
+            --highlight-green: #e0f696;
+            --bg-white: #ffffff;
+
+            /* Header Variables (From Home Page) */
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --text-dark: #1e293b;
+            --light-bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Unified Font */
+            background-color: #f9f9f9;
+            margin: 0;
+            color: var(--text-main);
+        }
+
+        /* --- HEADER STYLES (From Home Page) --- */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .navmenu ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navmenu a {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .navmenu a:hover,
+        .navmenu a.active {
+            color: var(--primary);
+        }
+
+        .btn-getstarted {
+            background: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-getstarted:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        /* Mobile Nav Toggle */
+        .mobile-nav-toggle {
+            color: var(--text-dark);
+            font-size: 28px;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 1199px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .navmenu {
+                display: none;
+            }
+
+            /* Hide menu on mobile */
+        }
+
+        /* --- PRICING TABLE STYLES --- */
+        .main-content {
+            padding: 120px 20px 40px;
+        }
+
+        .pricing-wrapper {
+            background: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            min-width: 1100px;
+        }
+
+        thead th {
+            text-align: center;
+            padding: 30px 10px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-white);
+            vertical-align: bottom;
+            position: relative;
+        }
+
+        thead th:first-child {
+            width: 25%;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        thead th:not(:first-child) {
+            width: 18.75%;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .plan-name {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .price-container {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .currency {
+            font-size: 18px;
+            margin-right: 2px;
+            position: relative;
+            top: -5px;
+        }
+
+        .period {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-left: 4px;
+        }
+
+        th.recommended-col {
+            padding-top: 0;
+            border-top: none;
+            background-color: #fff;
+            border-bottom: 3px solid var(--highlight-green);
+        }
+
+        .badge {
+            background-color: var(--highlight-green);
+            color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 8px 0;
+            width: 100%;
+            display: block;
+            margin-bottom: 22px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tbody td {
+            padding: 14px 20px;
+            color: var(--text-main);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-right: 1px solid var(--border-color);
+        }
+
+        tbody td:not(:first-child) {
+            text-align: center;
+            border-left: 1px solid var(--border-color);
+        }
+
+        tr.section-header td {
+            font-weight: 700;
+            background-color: #f4f4f4;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            border-bottom: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr.section-header td:not(:first-child) {
+            border-left: 1px solid var(--border-color);
+        }
+
+        .info-icon {
+            color: #b0b0b0;
+            cursor: help;
+            margin-left: 8px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-family: serif;
+        }
+
+        .check {
+            color: #00c853;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #ff0000;
+            font-size: 16px;
+            opacity: 0.6;
+        }
+
+        .dash {
+            color: #ccc;
+            font-weight: bold;
+        }
+
+        .sub-text {
+            display: block;
+            font-size: 10px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        /* Terms Text at Bottom */
+        .terms-text {
+            text-align: right;
+            font-size: 12px;
+            color: #777;
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            font-style: italic;
+        }
+
+        /* --- MOBILE RESPONSIVENESS (STICKY COLUMN) --- */
+        @media (max-width: 900px) {
+
+            /* Fix the first column so it stays visible while scrolling */
+            thead th:first-child,
+            tbody td:first-child,
+            tr.section-header td:first-child {
+                position: sticky;
+                left: 0;
+                z-index: 10;
+                background-color: #fff;
+                /* Must be opaque to hide scrolling text */
+                border-right: 2px solid var(--border-color);
+                /* Stronger border to separate */
+                box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            /* Specific fix for Section Headers to match their gray background */
+            tr.section-header td:first-child {
+                background-color: #f4f4f4;
+            }
+
+            .main-content {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+    <link rel="icon" href="../image/Main_Branch_png_logo.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <img src="../image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../services/">Services</a>
+                <a href="../contact-us/">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content padding-top-nav">
+        <div class="pricing-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+
+                        <th>
+                            <span class="plan-name">Basic</span>
+                            <div class="price-container">
+                                <span class="currency">₹</span>80,000<span class="period">/mo + GST</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <span class="plan-name">Pro</span>
+                            <div class="price-container">
+                                <span class="currency">₹</span>1,50,000<span class="period">/mo + GST</span>
+                            </div>
+                        </th>
+
+                        <th class="recommended-col">
+                            <div class="badge">Recommended</div>
+                            <span class="plan-name">Pro+</span>
+                            <div class="price-container">
+                                <span class="currency">₹</span>2,20,500<span class="period">/mo + GST</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <span class="plan-name">Enterprise</span>
+                            <div class="price-container">
+                                <span class="currency">₹</span>3,20,500<span class="period">/mo + GST</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="section-header">
+                        <td>Limitations</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>No. of Students <span class="info-icon">i</span></td>
+                        <td>2,000</td>
+                        <td>5,000</td>
+                        <td>7,000</td>
+                        <td>10,000</td>
+                    </tr>
+                    <tr>
+                        <td>No. of Teachers / Staff <span class="info-icon">i</span></td>
+                        <td>200</td>
+                        <td>500</td>
+                        <td>1,000</td>
+                        <td>5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ad-Free Experience <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span><span class="sub-text">Contains Ads</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">Minimal Ads</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">No Ads</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">No Ads</span></td>
+                    </tr>
+                    <tr>
+                        <td>College Logo & Name <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">Name Only</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">Full Branding</span></td>
+                        <td><span class="check">✓</span><span class="sub-text">White Label</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td>Server & Infrastructure</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Media Storage <span class="info-icon">i</span></td>
+                        <td>100 GB</td>
+                        <td>1 TB</td>
+                        <td>5 TB</td>
+                        <td>10 TB</td>
+                    </tr>
+                    <tr>
+                        <td>Database Storage <span class="info-icon">i</span></td>
+                        <td>4 GB</td>
+                        <td>8 GB</td>
+                        <td>50 GB</td>
+                        <td>100 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Max File Upload Size <span class="info-icon">i</span></td>
+                        <td>2 MB</td>
+                        <td>10 MB</td>
+                        <td>50 MB</td>
+                        <td>1 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Realtime Concurrency <span class="info-icon"
+                                title="Simultaneous users in Chat/Attendance">i</span></td>
+                        <td>1000<br><span class="sub-text">Live Users</span></td>
+                        <td>2000<br><span class="sub-text">Live Users</span></td>
+                        <td>4000<br><span class="sub-text">Live Users</span></td>
+                        <td>7000<br><span class="sub-text">Live Users</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td>Data Security</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Database Backup <span class="info-icon" title="Frequency of backups">i</span></td>
+                        <td>Weekly</td>
+                        <td>Daily</td>
+                        <td>Every 6 Hours</td>
+                        <td>Real-time (Live)</td>
+                    </tr>
+                    <tr>
+                        <td>Activity Audit Log <span class="info-icon"
+                                title="Track who changed marks/attendance">i</span></td>
+                        <td>None</td>
+                        <td>None</td>
+                        <td>Basic</td>
+                        <td>Advanced</td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td>App Platforms</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Student App <span class="info-icon">i</span></td>
+                        <td>Android</td>
+                        <td>Android + Windows</td>
+                        <td>Android + Windows</td>
+                        <td>Android + Windows + IOS</td>
+                    </tr>
+
+                    <tr>
+                        <td>Company Credits <span class="info-icon">i</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="cross">⨉</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Parent Tracking App <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>New Features Update <span class="info-icon">i</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Teacher Console <span class="info-icon">i</span></td>
+                        <td>Android</td>
+                        <td>Android</td>
+                        <td>Android + Windows</td>
+                        <td>All Platforms</td>
+                    </tr>
+                    <tr>
+                        <td>Console Panel Roles <span class="info-icon">i</span></td>
+                        <td>3<br><span class="sub-text">Teacher, Principal</span></td>
+                        <td>4<br><span class="sub-text">Teacher, Principal, Mgmt</span></td>
+                        <td>5<br><span class="sub-text">Acct, Teacher, Principal, Mgmt</span></td>
+                        <td>7<br><span class="sub-text">Fully Custom</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td>Feature List</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Live Attendance <span class="info-icon">i</span></td>
+                        <td>Simple</td>
+                        <td>Simple</td>
+                        <td>Advanced</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Dedicated Profile <span class="info-icon">i</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Payment Gateway <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Digital Library <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Smart Results (CGPA) <span class="info-icon">i</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Quizzes & Forms <span class="info-icon">i</span></td>
+                        <td>Simple</td>
+                        <td>Simple</td>
+                        <td>Secure Mode</td>
+                        <td>Secure Mode</td>
+                    </tr>
+                    <tr>
+                        <td>Placement Cell <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Counselor Messaging <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Chatting Feature <span class="info-icon">i</span></td>
+                        <td>Class Only</td>
+                        <td>Class Only</td>
+                        <td>Class + Branch</td>
+                        <td>Class + Branch</td>
+                    </tr>
+                    <tr>
+                        <td>Chat Supervision Authority <span class="info-icon">i</span></td>
+                        <td>None</td>
+                        <td>None</td>
+                        <td>None</td>
+                        <td>Basic Authority</td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td>Support & Terms</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>App Store Fees (Apple/Google) <span class="info-icon">i</span></td>
+                        <td>Client Pays</td>
+                        <td>Client Pays</td>
+                        <td>Included</td>
+                        <td>Included</td>
+                    </tr>
+                    <tr>
+                        <td>Data Migration <span class="info-icon">i</span></td>
+                        <td>None</td>
+                        <td>1st Time Only</td>
+                        <td>1 Time/Year</td>
+                        <td>2 Times/Year</td>
+                    </tr>
+                    <tr>
+                        <td>Bug Fix SLA <span class="info-icon" title="Guaranteed fix time">i</span></td>
+                        <td>Critical: 48h<br><span class="sub-text">Minor: 6 Mo</span></td>
+                        <td>Critical: 48h<br><span class="sub-text">Minor: 1 Mo</span></td>
+                        <td>Critical: 24h<br><span class="sub-text">Minor: 1 Week</span></td>
+                        <td>Critical: 4h<br><span class="sub-text">Minor: 24h</span></td>
+                    </tr>
+                    <tr>
+                        <td>Training <span class="info-icon">i</span></td>
+                        <td>Video</td>
+                        <td>Video + 1 Visit</td>
+                        <td>Video + 1 Visit</td>
+                        <td>Video + 2 Visit</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Features <span class="info-icon">i</span></td>
+                        <td><span class="cross">⨉</span></td>
+                        <td>10 hr / Year</td>
+                        <td>20 hr / Year</td>
+                        <td>50 hr / Year</td>
+                    </tr>
+                    <tr>
+                        <td>Minimum Contract <span class="info-icon">i</span></td>
+                        <td>1 Year</td>
+                        <td>1 Year</td>
+                        <td>1 Year</td>
+                        <td>1 Year</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="terms-text">
+                <a href="https://adityadivte.com/clgedu-tearms-and-condition-privacy-policy/"> * Terms and conditions
+                    apply</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="text-gradient">ADITYA DIVTE</span><br>PRODUCTION</h3>
+                    <p>A multidisciplinary production house delivering excellence in Games, Film, Architecture
+                        Visualization, and Technology across India.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../services/">Our Services</a></li>
+                        <li><a href="../contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../services/">Game Development</a></li>
+                        <li><a href="../services/">Cinematic VFX</a></li>
+                        <li><a href="../services/">Web & App Dev</a></li>
+                        <li><a href="../services/">College ERP</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope icon"></i> nerotomedia@gmail.com</p>
+                    <p><i class="fas fa-phone icon"></i> +91 935614061</p>
+                    <p><i class="fas fa-map-marker-alt icon"></i> India</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="../clgedu-terms-conditions/index.html"
+                        style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Terms &
+                        Conditions</a>
+                    <a href="../erp-pricing/"
+                        style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Pricing
+                        Plan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+    </script>
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
