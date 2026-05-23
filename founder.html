@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Divte - Founder & CEO | Aditya Divte Production</title>
+    <meta name="description" content="Official profile of Aditya Divte, Game Designer, Unreal Engine Specialist, and Animation Content Developer.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Comprehensive Person Schema for Knowledge Panel -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Aditya Divte",
+      "jobTitle": "Game Designer & Unreal Engine Specialist",
+      "url": "https://adityadivte.com/founder.html",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Aditya Divte Production",
+        "url": "https://adityadivte.com"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Nutan Maharashtra Institute of Engineering and Technology (NMIET)"
+      },
+      "knowsAbout": [
+        "Unreal Engine 5", 
+        "Game Design", 
+        "3D Animation", 
+        "Motion Capture", 
+        "Cinematic VFX", 
+        "Python Automation"
+      ],
+      "description": "Aditya Divte is a passionate Game Designer and Unreal Engine Specialist with over 6 years of experience in full-cycle development.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #f3f4f6; margin: 0; padding: 0; opacity: 1 !important; line-height: 1.6; }
+        
+        .hero-founder { 
+            background: linear-gradient(135deg, #111827 0%, #000000 100%); 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid #1f2937; 
+        }
+        .hero-founder img {
+            width: 160px; height: 160px; object-fit: cover; 
+            border-radius: 50%; border: 4px solid #3b82f6; 
+            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(59,130,246,0.5);
+        }
+        .hero-founder h1 { 
+            font-size: 3.5rem; margin-bottom: 10px; 
+            background: linear-gradient(45deg, #60a5fa, #34d399); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+        .hero-founder h2 { font-size: 1.3rem; color: #9ca3af; font-weight: 500; margin-top: 0; letter-spacing: 1px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+        
+        .section-card { 
+            background: #111827; border-radius: 16px; padding: 40px; 
+            border: 1px solid #1f2937; margin-bottom: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .section-card h3 { 
+            color: #60a5fa; font-size: 1.8rem; margin-top: 0; 
+            border-bottom: 1px solid #1f2937; padding-bottom: 15px; margin-bottom: 25px; 
+        }
+        
+        p { color: #d1d5db; font-size: 1.1rem; margin-bottom: 20px; }
+        
+        .bio-layout { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+        .bio-text { flex: 1; min-width: 300px; }
+        .bio-img { flex: 0 0 350px; text-align: center; }
+        .bio-img img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); border: 1px solid #374151; }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+        
+        /* Project Items */
+        .project-item { background: #1f2937; padding: 25px; border-radius: 12px; border: 1px solid #374151; }
+        .project-item h4 { font-size: 1.3rem; color: #fff; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .project-item h4 i { color: #34d399; }
+        .project-item p { font-size: 0.95rem; color: #9ca3af; margin-bottom: 15px; }
+        .project-item ul { padding-left: 20px; color: #d1d5db; font-size: 0.95rem; }
+        .project-item ul li { margin-bottom: 8px; }
+        
+        /* Milestones List */
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-list li { 
+            background: rgba(59, 130, 246, 0.05); border-left: 4px solid #3b82f6; 
+            padding: 15px 20px; margin-bottom: 15px; border-radius: 0 8px 8px 0; 
+            font-size: 1.05rem; color: #e5e7eb;
+        }
+        .milestone-list li strong { color: #fff; }
+
+        /* Skills Pills */
+        .skills-wrapper { margin-bottom: 30px; }
+        .skills-wrapper h5 { color: #fff; font-size: 1.1rem; margin-bottom: 15px; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; margin: 0; }
+        .skills-list li { 
+            background: rgba(255, 255, 255, 0.05); color: #9ca3af; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; 
+        }
+
+        .back-link { 
+            display: inline-block; margin-top: 20px; color: #60a5fa; 
+            text-decoration: none; font-weight: 600; padding: 12px 25px; 
+            border: 1px solid #60a5fa; border-radius: 8px; transition: all 0.3s; 
+        }
+        .back-link:hover { background: #60a5fa; color: #111827; }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero-founder">
+        <div class="container" style="padding: 20px;">
+            <img src="assets/image.jpg" alt="Aditya Divte Profile Picture">
+            <h1>Aditya Divte</h1>
+            <h2>Game Designer | Unreal Engine Specialist | Animation Content Developer</h2>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+                <a href="https://instagram.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.8rem; transition: color 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.8rem; transition: color 0.3s;" onmouseover="this.style.color='#1DA1F2'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/aditya-divte-227438383" target="_blank" style="color: #9ca3af; font-size: 1.8rem; transition: color 0.3s;" onmouseover="this.style.color='#0077B5'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Profile Info -->
+        <div class="section-card">
+            <h3>Profile Info</h3>
+            <div class="bio-layout">
+                <div class="bio-text">
+                    <p>
+                        Passionate Game Designer and Unreal Engine Specialist with over 6 years of experience in full-cycle development. Expert in bridging the gap between Game Design, Animation Implementation, and Technical Art.
+                    </p>
+                    <p>
+                        I have a proven track record of designing core gameplay mechanics, level progression, and implementing complex animation systems for open-world and horror genres. Skilled in Blender, Unreal Engine 5, and Marvelous Designer, with a strong focus on technical problem-solving to deliver innovative player experiences.
+                    </p>
+                    <div style="background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); padding: 20px; border-radius: 8px; margin-top: 25px;">
+                        <h4 style="color: #34d399; margin-top: 0; font-size: 1.1rem;"><i class="fas fa-handshake"></i> Industry Collaboration</h4>
+                        <ul style="margin-bottom: 0; color: #d1d5db; padding-left: 20px;">
+                            <li style="margin-bottom: 10px;"><strong>NetEase Games:</strong> Contributed to technical testing and quality assurance for AAA titles like Marvel Rivals.</li>
+                            <li><strong>Independent Studios:</strong> Collaborated with various indie studios on asset implementation, game testing, and game design.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bio-img">
+                    <img src="assets/image2.jpeg" alt="Aditya Divte Working">
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Projects -->
+        <div class="section-card">
+            <h3>Key Projects & Game Design Experience</h3>
+            <div class="grid-2">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <h4><i class="fas fa-globe"></i> Open World Zombie Survival</h4>
+                    <p><em>Commercial Title In Development | Solo Game Designer (UE5)</em></p>
+                    <ul>
+                        <li>Authored comprehensive Game Design Documents (GDDs).</li>
+                        <li>Designed core survival loops (hunger, thirst, stamina) and balanced resource scarcity.</li>
+                        <li>Created large-scale open-world island topology using environmental storytelling.</li>
+                        <li>Designed complex Animation Blueprints using State Machines.</li>
+                    </ul>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-item">
+                    <h4><i class="fas fa-ghost"></i> Psychological Horror Title</h4>
+                    <p><em>Commercial Title In Development | Solo Game Designer (UE5)</em></p>
+                    <ul>
+                        <li>Designed puzzle logic and stealth mechanics focusing on tension-building.</li>
+                        <li>Scripted narrative events and trigger-based sequences to control emotional pacing.</li>
+                        <li>Architected a modular save/load system and checkpoint logic.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <h4><i class="fas fa-users"></i> Squid Game Survival</h4>
+                    <p><em>Rapid Prototype — Solo Dev in 3 Days (UE5)</em></p>
+                    <ul>
+                        <li>Engineered four rounds ("Red Light, Green Light", "Glass Bridge") in under 72 hours.</li>
+                        <li>Architected a modular "Game Mode" framework to manage distinct rule sets per round.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-item">
+                    <h4><i class="fas fa-running"></i> The Hardest Mario Game</h4>
+                    <p><em>3-Hour Rapid Prototype (UE5)</em></p>
+                    <ul>
+                        <li>Engineered a high-difficulty 3D platforming system with tight jump windows.</li>
+                        <li>Implemented streamlined death-and-respawn framework for immediate resets.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Independent Milestones -->
+        <div class="section-card">
+            <h3>Independent Milestones</h3>
+            <ul class="milestone-list">
+                <li>
+                    <strong>Commercial Success:</strong> Independently designed and sold a high-fidelity 3D background environment to a multinational corporation for <strong>₹5,00,000</strong>.
+                </li>
+                <li>
+                    <strong>Portfolio Volume:</strong> Developed and self-delivered <strong>6 complete 3D games</strong> and <strong>4 Android applications</strong> (including one social media platform).
+                </li>
+                <li>
+                    <strong>Early Career:</strong> Successfully managed third-party partner registrations and app marketing as a Field Executive at <strong>age 14</strong>, demonstrating long-term industry commitment.
+                </li>
+                <li>
+                    <strong>Brand Management:</strong> Designed logos and successfully completed Trademark Registration, including Intellectual Property Protection (IPR).
+                </li>
+            </ul>
+        </div>
+
+        <!-- Technical Toolkit -->
+        <div class="section-card">
+            <h3>Technical Toolkit & Expertise</h3>
+            
+            <div class="skills-wrapper">
+                <h5>Game Engine & 3D Art</h5>
+                <ul class="skills-list">
+                    <li>Unreal Engine 5 (Specialist)</li>
+                    <li>Unity (Baseline)</li>
+                    <li>Blender</li>
+                    <li>ZBrush</li>
+                    <li>Substance 3D Painter</li>
+                    <li>Marvelous Designer</li>
+                    <li>MetaHuman</li>
+                </ul>
+            </div>
+
+            <div class="skills-wrapper">
+                <h5>VFX, Video & UI</h5>
+                <ul class="skills-list">
+                    <li>Niagara VFX</li>
+                    <li>DaVinci Resolve</li>
+                    <li>Adobe After Effects</li>
+                    <li>Figma (UI/UX)</li>
+                    <li>Motion Capture (Mocap) Cleanup</li>
+                </ul>
+            </div>
+
+            <div class="skills-wrapper">
+                <h5>Programming & Platform Development</h5>
+                <ul class="skills-list">
+                    <li>Python (Automation)</li>
+                    <li>C++ (AI-Assisted Scripting)</li>
+                    <li>Flutter & Dart</li>
+                    <li>HTML / CSS / Sass</li>
+                    <li>Git / GitHub</li>
+                    <li>Linux Command Line</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section-card">
+            <h3>Education</h3>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #3b82f6;"></i>
+                <div>
+                    <h4 style="margin: 0; font-size: 1.2rem; color: #fff;">B.Tech in Computer Science and Engineering</h4>
+                    <p style="margin: 5px 0 0; color: #9ca3af;">Nutan Maharashtra Institute of Engineering and Technology (NMIET) — <em>Currently in 1st Year</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Return -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Main Website</a>
+        </div>
+
+    </main>
+</body>
+</html>

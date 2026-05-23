@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Center - Aditya Divte Production</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --accent-color: #e74c3c;  /* Red */
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+        }
+
+        /* Header Styling */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 10px;
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 5px 15px;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* Typography */
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 60px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 30px;
+            font-size: 1.3em;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: #555;
+            text-align: justify;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Alerts and Warnings */
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .danger-box {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background-color: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        /* Pricing Table Styling */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .pricing-table th, .pricing-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .pricing-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .pricing-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        .print-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; margin: 10px; }
+            nav a { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LEGAL CENTER</h1>
+        <p>Aditya Divte Production | ClgEdu ERP</p>
+        <p style="font-size: 0.8em;">Master Agreement covering Terms of Service, Privacy, and Financial Liability</p>
+    </header>
+
+    <nav>
+        <a href="#terms">Terms of Service</a>
+        <a href="#plans">Subscription Plans</a>
+        <a href="#student-privacy">Student Privacy</a>
+        <a href="#financial">Financial Policy</a>
+        <a href="#advance-payment-terms" style="color: #e74c3c;">Advance Payment</a>
+        <a href="#termination-policy" style="color: #e74c3c;">Termination</a>
+        <a href="#dispute">Dispute & Family Protection</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="terms">
+            <h2>1. MASTER SUBSCRIPTION AGREEMENT (TERMS OF SERVICE)</h2>
+            <p><strong>Effective Date:</strong> 15 Feb 2026</p>
+            <p><strong>Owner/Operator:</strong> Aditya Divte Production ("Company", "We", "Us")</p>
+            
+            <div class="info-box">
+                <strong>1.1 ACCEPTANCE:</strong> By subscribing to, accessing, or using the ClgEdu ERP Service, the Educational Institution ("Client", "Subscriber") agrees to be strictly bound by these terms. If you do not agree, do not use the Service.
+            </div>
+
+            <h3>1.2 MODIFICATIONS (FUTURE UPDATES)</h3>
+            <p>The Company reserves the right to modify, update, or replace these Terms and Conditions at any time without prior specific notice. Your continued use of the Service after any such changes constitutes your acceptance of the new Terms.</p>
+
+           <h3>1.3 THIRD-PARTY INFRASTRUCTURE DISCLAIMER</h3>
+<ul>
+    <li>
+        <strong>Reliance on Backend Services:</strong> The User acknowledges and agrees that the Service is built upon, hosted by, and operates through third-party infrastructure and cloud service providers, including but not limited to Supabase, Amazon Web Services (AWS), Google Cloud Platform (GCP), Godaddy, hostinger and other external hosting environments.
+    </li>
+    <li>
+        <strong>Limitation of Liability for Third-Party Failures:</strong> To the maximum extent permitted by applicable law, Aditya Divte Production explicitly disclaims any and all liability for service interruptions, downtime, data latency, security breaches, malware or viral attacks, and human error. Furthermore, Aditya Divte Production shall not be liable for network unavailability, acts of God, force majeure events (including natural disasters or acts of war), or any data loss, service degradation, or technical issues resulting directly or indirectly from the failure, negligence, or operational limitations of these third-party providers.
+    </li>
+    <li>
+        <strong>App Store and Publishing Delays:</strong> Aditya Divte Production shall not be held responsible or liable for any delays, rejections, or suspensions regarding the publishing, updating, or deployment of software. This includes delays caused by the review processes, terms of service, or changing policies of third-party distribution platforms, including but not limited to the Apple App Store, Google Play Store, or any other third-party application, software, or ERP publishing center.
+    </li>
+    <li>
+        <strong>Exclusion of Consequential Damages:</strong> Under no circumstances shall Aditya Divte Production be liable to the User or any third party for any direct, indirect, incidental, consequential, special, or punitive damages arising from the aforementioned third-party failures or publishing delays. This includes, without limitation: loss of data, financial loss, loss of income, loss of reputation, and loss of admissions.
+    </li>
+</ul>
+
+      
+    <h3>1.4 STABILIZATION PERIOD (The "90-Day Rule")</h3>
+    <p>The Client acknowledges that Enterprise Resource Planning (ERP) implementation requires significant time and iterative adjustments to stabilize and function optimally within their specific environment.</p>
+    <ul>
+        <li>
+            <strong>Setup and Configuration Phase (Month 1):</strong> Setup and Configuration Phase & Client Data Obligations: The initial setup phase is provided on a non-payable (free) basis strictly for system configuration, custom feature deployment, initial data entry, and the initial online display of the app and ERP. No performance guarantees apply during this phase. Furthermore, this free setup is strictly contingent upon the Client (College) providing all required institutional data in a complete, accurate, fully formatted, and "ready-to-upload" condition that meets the exact specifications of the ERP system. Aditya Divte Production is not liable for any deployment delays caused by the Client providing incomplete, unstructured, or corrupted data. and Aditya Divte Production required  Client’s (College’s) app, backend, faculty user support and  office staff support 
+        </li>
+        <li>
+            <strong>Commencement of Paid Subscription:</strong> Immediately following the conclusion of the free setup phase (commencing on Month 2), the mandatory annual subscription period shall automatically begin.
+        </li>
+        <li>
+            <strong>Unconditional Payment Obligation:</strong> The Client acknowledges and explicitly agrees that the annual subscription fee is fully payable, compulsory, and strictly non-refundable for the entire one-year term. This payment obligation is absolute and unconditional, regardless of whether the clgedu ERP system or application is fully functional, partially functional, stabilizing, or experiencing technical difficulties. The Client explicitly waives any right to withhold, deduct, set-off, or delay payment based on system performance, software bugs, or operational status.
+        </li>
+        <li>
+            <strong>90-Day Stabilization & Waiver of Claims (Months 2-4):</strong> Commencing from the first day of "Live" usage, the Client explicitly agrees <strong>NOT</strong> to claim damages, seek financial refunds, or allege a breach of contract for minor software bugs, data syncing latency, or operational interruptions. Aditya Divte Production reserves the unilateral right to extend this required stabilization time duration as per situational requirements.
+        </li>
+        <li>
+            <strong>Limitation of Financial Liability (Damage Cap):</strong> Notwithstanding any claims, damages, or losses alleged by the Client, and regardless of the outcome of any arbitration award or judicial decree, the total cumulative liability of Aditya Divte Production and its founder, Aditya Diwate, shall be strictly capped. Under no legal theory shall the total payable compensation, penalty, damages, or refund exceed ten percent (10%) of the total annual service fee actually paid by the Client during the specific calendar year the dispute arose.
+        </li>
+        <li>
+            <strong>Exclusive Jurisdiction:</strong> Any dispute, disagreement, or legal claim regarding system performance shall be subject to the exclusive jurisdiction of the competent courts located in Nagpur, Maharashtra, India. By using the service, the Client explicitly waives any right to initiate legal proceedings, file complaints, or demand money in international courts, courts in other cities or states, or through any other outside government or administrative departments.
+        </li>
+        <li>
+            <strong>Arbitration and Dispute Resolution:</strong> In the event of any dispute, controversy, or claim arising out of or relating to the implementation or use of the Service, the parties agree to resolve the matter through binding private arbitration. To comply with the Arbitration and Conciliation Act, 1996, Aditya Divte Production shall provide a panel of three (3) independent and neutral arbitrators. The Client shall select one (1) arbitrator from this panel to serve as the sole arbitrator. The seat and venue of the arbitration shall be Nagpur, Maharashtra, India, and the decision shall be final, binding, and enforceable.
+        </li>
+    </ul>
+</section>
+
+        <section id="plans">
+            <h2>2. SUBSCRIPTION PLAN SPECIFICATIONS</h2>
+            <p>Your rights and limits are strictly governed by your purchased tier. Exceeding these limits will result in overage charges.</p>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Student Limit</th>
+                        <th>Storage</th>
+                        <th>Ads</th>
+                        <th>Fees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BASIC</strong><br>₹80k/mo</td>
+                        <td>2,000</td>
+                        <td>100 GB</td>
+                        <td>YES (Cannot Block)</td>
+                        <td>Client Pays App Store Fees</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PRO</strong><br>₹1.5L/mo</td>
+                        <td>5,000</td>
+                        <td>1 TB</td>
+                        <td>Minimal</td>
+                        <td>Client Pays App Store Fees</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PRO+</strong><br>₹2.2L/mo</td>
+                        <td>7,000</td>
+                        <td>5 TB</td>
+                        <td>NO ADS</td>
+                        <td><strong>Fees Included</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ENTERPRISE</strong><br>₹3.2L/mo</td>
+                        <td>10,000</td>
+                        <td>10 TB</td>
+                        <td>White Label</td>
+                        <td><strong>Fees Included</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Minimum Contract:</strong> All plans carry a mandatory **1-Year Minimum Contract**. Early cancellation requires payment of the full year's fees. All fees paid are **Non-Refundable**.
+            </div>
+        </section>
+
+        <section id="student-privacy">
+            <h2>3. STUDENT DATA PRIVACY POLICY</h2>
+            <p><strong>Applicable To:</strong> Students and Parents using the ClgEdu App.</p>
+
+            <h3>3.1 DATA COLLECTION</h3>
+            <p>To generate results and ID cards, we process: Name, Roll No, DOB, Gender, Photo, Marks, Attendance, and Fee Status. This data is uploaded by your College Administration.</p>
+
+            <h3>3.2 WHO SEES YOUR DATA?</h3>
+            <ul>
+                <li><strong>Parents:</strong> Can track attendance and marks via the Parent App.</li>
+                <li><strong>Your College Staff, management and Aditya Divte Production Supabase thirdparty database servise provider  :</strong> Have full read/write access to your academic records.</li>
+                <li><strong>Ad Networks (Basic Plan / Pro Plan):</strong> Third-party ad networks (e.g., Google AdMob) may access your Device ID to show advertisements. We do NOT share your marks or photos with advertisers.</li>
+            </ul>
+
+            <h3>3.3 DATA SECURITY</h3>
+            <p>Your data is stored on secure cloud servers (Supabase). While we use encryption, <strong>Aditya Divte Production</strong> is not liable for data leaks caused by College Admins sharing passwords or hacking events, viras attack, theft, crash, .</p>
+        </section>
+
+        <section id="financial">
+            <h2>4. FINANCIAL LIABILITY & FRAUD POLICY</h2>
+            <div class="danger-box">
+                <strong>CRITICAL:</strong> Aditya Divte Production is a Software Developement Company / Production House / Service Provider, NOT a Bank. We do not hold or process your money.
+            </div>
+
+            <h3>4.1 ROLE OF ERP</h3>
+            <p>ClgEdu ERP acts only as a technical bridge to Payment Gateways (Razorpay/Paytm). Money flows directly from Student → Gateway → College Bank Account.</p>
+
+            <h3>4.2 NO LIABILITY FOR FAILED TRANSACTIONS</h3>
+            <p>The College agrees that Aditya Divte Production is <strong>NOT liable</strong> for:</p>
+            <ul>
+                <li>Failed, pending, or "stuck" transactions due to bank server downtime.</li>
+                <li>Money deducted from students but not credited to the College.</li>
+                <li>Fraud, Phishing, or OTP scams targeting the College Admin.</li>
+                <li>Wrong Bank Account details entered by the College Admin.</li>
+                <li>Failed, pending, or "stuck" and amount hold of transactions.</li>
+            </ul>
+
+            <h3>4.3 SOLE REMEDY</h3>
+            <p>The College's sole remedy for financial disputes is to contact the **Payment Gateway Provider** directly.</p>
+        </section>
+
+        <section id="advance-payment-terms">
+            <h2>5. ONE-YEAR ADVANCE PAYMENT & MANDATORY SUBSCRIPTION</h2>
+            <div class="warning-box">
+                <strong>CRITICAL FINANCIAL TERM:</strong> All subscriptions for ClgEdu ERP are sold on a strict <strong>Pre-Paid Annual Basis</strong>. Post-paid or monthly payment options are NOT available unless explicitly authorized in a separate written contract.
+            </div>
+
+            <h3>5.1 MANDATORY ONE-YEAR CONTRACT (LOCK-IN PERIOD)</h3>
+            <p>By purchasing a subscription, the Educational Institution ("Client") agrees to a mandatory <strong>Lock-in Period of One (1) Year</strong> (12 Months) from the date of activation.</p>
+            <ul>
+                <li><strong>No Partial Cancellation:</strong> The Client cannot cancel the subscription after 3 months, 6 months, or any duration less than 1 year.</li>
+                <li><strong>Liability for Full Term:</strong> Even if the Client chooses to discontinue using the Software mid-year, they remain liable for the full 12-month subscription cost.</li>
+            </ul>
+
+            <h3>5.2 100% ADVANCE PAYMENT RULE</h3>
+            <p>To activate the Service, the Client must adhere to the following payment schedule:</p>
+            <ul>
+                <li><strong>Upfront Payment:</strong> The Client must pay <strong>100% of the Annual Subscription Fee</strong> (for 12 months) + applicable GST <strong>IN ADVANCE</strong> before the account is activated.</li>
+                <li><strong>Service Activation:</strong> The ERP setup, app generation, and training will commence ONLY after the payment is credited to Aditya Divte Production’s bank account. Cheque presentation or screenshot of transfer is not sufficient proof of credit.</li>
+            </ul>
+
+            <h3>5.3 NO REFUND POLICY (STRICT)</h3>
+            <p>Once the payment is processed and the account setup has begun (even if no students have logged in yet), the fees paid are <strong>NON-REFUNDABLE</strong> under any circumstances, including but not limited to:</p>
+            <ul>
+                <li>Change of mind by the College Management or Trustees.</li>
+                <li>Lack of usage by students or staff.</li>
+                <li>Lack of Students.</li>
+                <li>Closing down of the institution.</li>
+                <li>Disagreement with features that were already described in the Demo.</li>
+                <li>Poor or None Internet service in your Area/city/village.</li>
+            </ul>
+
+            <h3>5.4 RENEWAL & PRICE PROTECTION</h3>
+            <p>The Advance Payment covers the subscription for exactly 365 days.</p>
+            <ul>
+                <li><strong>Renewal Notice:</strong> The Client must pay the renewal fee 15 days before the expiry of the current term to avoid service interruption.</li>
+                <li><strong>Price Hikes:</strong> Aditya Divte Production reserves the right to increase subscription prices for the <em>next</em> renewal term.</li>
+            </ul> 
+            <ul>
+            <h3>5.5 SUBSCRIPTION MIGRATION PERIOD</h3>
+                <p>Upon electing to migrate to a different subscription tier, a <strong>transition period of three (3) months</strong> is required for the new plan to become fully effective.</p>
+                    <ul>
+                <li>During this conversion period, existing service limitations may still apply.</li>
+                <li>Full implementation of the new plan’s features and pricing will be finalized at the conclusion of the 90-day window.</li>
+            </ul>
+                <ul>
+                <h3>5.6 ACCEPTANCE OF APPLICATION FUNCTIONALITY</h3>
+                   <p>By using the Service, the Client acknowledges and agrees to the following regarding the application’s operation:</p>
+                 <ul>
+                     <li>The Client accepts the current <strong>functionality and operational workflow</strong> of the application as provided.</li>
+                     <li>The Client agrees that the application is fit for its intended purpose and acknowledges the <strong>standard workflows</strong> established by the Company.</li>
+                     <li>Any modifications or deviations from the standard workflow are subject to the Company’s prior written approval and may incur additional fees.</li>
+                     <li>Any customized plan created specifically for you, or any additional feature added as per your request, will still be considered a company-developed feature. The company reserves the right to offer or sell such features to other colleges or clients.</li>
+             </ul>
+                    <ul>
+                    <h3>5.7 MODIFICATIONS TO SERVICES AND PRICING</h3>
+                       <p>The Company reserves the right to modify the Service and its associated pricing at its sole discretion:</p>
+                     <ul>
+                     <li>The Company may <strong>add, update, or remove features</strong> within any subscription plan at any time to enhance the Service.</li>
+                     <li>The Company reserves the right to <strong>adjust subscription pricing</strong> to reflect the inclusion of new features or changes in operational costs.</li>
+                     <li>Any changes to pricing for existing subscriptions will take effect upon the next renewal cycle, following a 30-day prior notice to the Client.</li>
+              </ul>
+               <ul>
+                  <h3>5.8 IMPACT OF PRICING ADJUSTMENTS ON ADVANCE PAYMENTS</h3>
+                    <p>Any adjustments to subscription pricing, whether due to feature enhancements or operational changes, shall apply to all subsequent billing cycles:</p>
+                   <ul>
+                     <li>Updated pricing will <strong>directly affect the Advance Fee</strong> for the next one-year (1) renewal term.</li>
+                     <li>Clients will be notified of any pricing changes at least thirty (30) days prior to the automatic renewal date.</li>
+                     <li>The Advance Fee due for the subsequent year will be calculated based on the <strong>prevailing rate</strong> at the time of renewal.</li>
+              </ul>
+        </section>
+
+        <section id="termination-policy">
+            <h2>6. DISCONTINUATION & MANDATORY NOTICE PERIOD</h2>
+            <div class="danger-box">
+                <strong>STRICT NOTICE REQUIREMENT:</strong> To discontinue the Service, the Client must provide <strong>One (1) Year's Prior Notice</strong>. Immediate cancellation is NOT permitted under this Agreement.
+            </div>
+
+            <h3>6.1 THE "365-DAY" NOTICE RULE</h3>
+            <p>The Client acknowledges that ClgEdu ERP requires significant server resources and data retention planning. Therefore, if the Client wishes to discontinue or stop using the Service, they must submit a formal <strong>"Request for Discontinuation"</strong> in writing to Aditya Divte Production exactly <strong>365 Days (1 Year)</strong> before the intended date of stopping the service.</p>
+
+            <h3>6.2 APPROPRIATION OF ADVANCE PAYMENT</h3>
+            <p>Upon receiving the Discontinuation Notice:</p>
+            <ul>
+                <li><strong>Advance Adjustment:</strong> The <strong>One-Year Advance Payment</strong> already made by the Client for the current active term shall be treated as the fee for this mandatory notice period.</li>
+                <li><strong>No Refunds:</strong> Since the notice period is 1 year, and the payment is for 1 year, the Advance Payment will be fully utilized to cover the service costs until the termination date. <strong>No portion of the Advance Payment will be refunded.</strong></li>
+                <li><strong>Service Continuation:</strong> The App and ERP will remain fully active according to your selected subscription plan for the students during this 1-year notice period until the prepaid balance is exhausted.</li>
+            </ul>
+
+            <h3>6.3 AUTOMATIC RENEWAL (FAILURE TO NOTIFY)</h3>
+            <p>If the Client fails to provide the mandatory 1-Year Notice before the expiration of the current term:</p>
+            <ul>
+                <li>The Subscription shall <strong>Automatically Renew</strong> for another 1 Year.</li>
+                <li>The Client will be legally liable to pay the Advance Fee for the subsequent year.</li>
+            </ul>
+        </section>
+
+        <section id="dispute">
+            <h2>7. DISPUTE RESOLUTION & FAMILY PROTECTION</h2>
+            <div class="danger-box">
+                <strong>LEGAL WARNING:</strong> This section limits your right to sue and dictates exclusive jurisdiction.
+            </div>
+
+            <h3>7.1 EXCLUSIVE JURISDICTION (NAGPUR ONLY)</h3>
+            <p>The Client (Institute/Sanstha), Students, and Users agree that all disputes, criminal complaints, civil suits, or privacy matters shall be subject to the <strong>EXCLUSIVE JURISDICTION</strong> of the courts located in <strong>NAGPUR, MAHARASHTRA, INDIA</strong>.</p>
+            <p>You expressly waive the right to file an FIR or Civil Suit in any other city or state.</p>
+
+            <h3>7.2 WAIVER OF PERSONAL LIABILITY (FAMILY PROTECTION)</h3>
+            <p>The Client acknowledges they are contracting with "Aditya Divte Production" (the Entity) and NOT any individual personally. To the fullest extent permitted by law, the Client <strong>WAIVES ANY RIGHT</strong> to file personal lawsuits or harassment complaints against:</p>
+            <ul>
+                <li><strong>Aditya Divte (Owner/Individual)</strong></li>
+                <li><strong>His Immediate Family Members</strong> (Parents, Spouse, Siblings)</li>
+                <li><strong>His Personal Assets or Estate</strong></li>
+            </ul>
+            <p>Any liability shall be strictly limited to the business assets of the Company.</p>
+
+            <h3>7.3 MANDATORY ARBITRATION</h3>
+            <p>Before filing any case, parties must undergo Mandatory Arbitration with a Sole Arbitrator appointed by the Company. The seat of arbitration shall be <strong>Nagpur</strong>.</p>
+
+            <h3>7.4 INDEMNIFICATION</h3>
+            <p>The Client agrees to indemnify and hold harmless Aditya Divte Production from any lawsuits filed by students, parents, or third parties regarding data privacy, marks discrepancies, or app misuse.</p>
+            
+            <h3>7.5 ANTI-HARASSMENT & ZERO TOLERANCE</h3>
+            <p>Aditya Divte Production reserves the right to Terminate Service Immediately (without refund) if:</p>
+            <ul>
+                <li>The Client, Sanstha Trustees, or Staff engage in verbal abuse, threats of violence, "fighting," or physical intimidation against the Company’s owner or employees.</li>
+                <li>The Client files false or frivolous police complaints to pressure the Company for free services or refunds.</li>
+            </ul>
+        </section>
+
+        <div style="text-align: center; margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px;">
+            <p><strong>Electronic Acceptance:</strong> By clicking "I Agree" or using the Software, you acknowledge that you have read, understood, and agreed to be bound by these terms.</p>
+            <button class="print-btn" onclick="window.print()">Print This Agreement</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+        <p>Jurisdiction: Nagpur, Maharashtra, India.</p>
+    </footer>
+
+</body>
+</html>

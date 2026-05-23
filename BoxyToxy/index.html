@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Boxiy Strike - Dual Modes</title>
+    
+    <link rel="icon" type="image/png" href="adityaproductionlogo.png">
+    
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #050505; font-family: 'Segoe UI', Orbitron, sans-serif; user-select: none; -webkit-user-select: none; touch-action: none; color: white; }
+        #gameCanvas { width: 100%; height: 100%; display: block; }
+
+        #hud { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999999; display: none; }
+        #crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ff00; font-size: 24px; font-weight: 300; text-shadow: 1px 1px 2px #000; }
+
+        #scoreboard { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; background: rgba(0,0,0,0.7); padding: 10px 30px; border-radius: 4px; border-bottom: 3px solid #555; backdrop-filter: blur(5px); pointer-events: none; }
+        #timer { font-size: 28px; color: #fff; font-family: monospace; letter-spacing: 2px; font-weight: 900; }
+        #red-score { color: #ffaa00; margin-right: 15px; font-weight: 900; font-size: 24px; display: none; text-shadow: 2px 2px 0 #000; }
+        #blue-score { color: #ff3333; margin-left: 15px; font-weight: 900; font-size: 24px; display: none; text-shadow: 2px 2px 0 #000; }
+
+        #leaderboard { position: absolute; top: 20px; left: 20px; background: rgba(0, 0, 0, 0.7); padding: 15px; border-left: 4px solid #ffaa00; backdrop-filter: blur(5px); width: 220px; pointer-events: none; }
+        .lb-title { font-size: 14px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px; }
+        .lb-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; font-family: monospace; font-weight: bold; }
+        .lb-kills { color: #fff; }
+
+        #zombie-inventory { position: absolute; top: 160px; left: 20px; background: rgba(0, 0, 0, 0.7); padding: 15px; border-left: 4px solid #00ff00; backdrop-filter: blur(5px); width: 150px; display: none; pointer-events: none; }
+        .inv-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; font-family: monospace; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; }
+        .inv-val { color: #fff; font-size: 14px; }
+
+        #stats-panel { position: absolute; top: 20px; right: 20px; background: rgba(0, 0, 0, 0.7); padding: 15px 25px; border-right: 4px solid #00ff00; backdrop-filter: blur(5px); text-align: right; pointer-events: none; }
+        #hud-name { font-size: 16px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .stat-line { font-size: 12px; color: #aaa; letter-spacing: 1px; font-family: monospace; margin-top: 3px; }
+        .stat-val { color: #00ff00; font-size: 16px; font-weight: bold; }
+
+        #kill-feed { position: absolute; top: 35%; left: 10px; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; pointer-events: none; transform: scale(0.85); transform-origin: center left; }
+        .kill-feed-item { background: linear-gradient(90deg, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%); padding: 8px 18px; border-radius: 3px; font-family: 'Segoe UI', sans-serif; font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 12px; border-left: 4px solid #ff3333; animation: slideInFeed 0.2s ease-out, fadeOutFeed 0.5s ease-in 4.5s forwards; text-shadow: 1px 1px 2px #000; }
+        @keyframes slideInFeed { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOutFeed { to { opacity: 0; visibility: hidden; } }
+
+        .hud-bottom-left { position: absolute; bottom: 40px; left: 40px; background: rgba(0, 0, 0, 0.7); padding: 15px; border-left: 5px solid #ff3333; backdrop-filter: blur(5px); pointer-events: none;}
+        .hp-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .hp-bar-bg { width: 180px; height: 8px; background: #222; margin-top: 8px; border-radius: 2px; }
+        #hp-bar-fill { width: 100%; height: 100%; background: #00ff00; transition: width 0.2s, background 0.2s; }
+
+        .hud-bottom-right { position: absolute; bottom: 40px; right: 40px; text-align: right; background: rgba(0, 0, 0, 0.7); padding: 15px; border-right: 5px solid #ff3333; backdrop-filter: blur(5px); pointer-events: none; }
+        #weapon-name { font-size: 20px; font-weight: 900; text-transform: uppercase; color: #fff; }
+        .ammo-status { font-size: 12px; color: #aaa; margin-top: 5px; font-family: monospace; }
+
+        #weapon-bar { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; pointer-events: auto; max-width: 85vw; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding-bottom: 5px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; z-index: 9999999; touch-action: pan-x; }
+        #weapon-bar::-webkit-scrollbar { display: none; }
+        #weapon-bar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .weapon-slot { flex: 0 0 55px; width: 55px; height: 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; opacity: 0.5; pointer-events: auto; }
+        .weapon-slot.unlocked { opacity: 1.0; }
+        .weapon-slot.active { border-color: #ff3333; background: rgba(255, 51, 51, 0.2); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255,51,51,0.3); opacity: 1.0; }
+        .slot-key { font-size: 10px; color: #aaa; margin-bottom: 2px;}
+        .slot-name { font-size: 9px; text-align: center; margin-top: 2px; font-weight: bold; }
+
+        #boss-warning { position: absolute; top: 120px; left: 50%; transform: translateX(-50%); color: #ff0000; font-size: clamp(24px, 5vw, 45px); font-weight: 900; letter-spacing: 5px; text-align: center; text-transform: uppercase; pointer-events: none; opacity: 0; z-index: 999999; width: 90vw; }
+        #boss-warning.active { animation: epicWarning 6s forwards ease-in-out; }
+        
+        @keyframes epicWarning {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.5); text-shadow: 0 0 0px #ff0000; }
+            10% { opacity: 1; transform: translateX(-50%) scale(1.1); text-shadow: 0 0 40px #ff0000; }
+            15% { transform: translateX(-50%) scale(1.0); }
+            20%, 40%, 60%, 80% { opacity: 1; color: #ffffff; text-shadow: 0 0 20px #ff0000; }
+            30%, 50%, 70%, 90% { opacity: 0.7; color: #ff0000; text-shadow: 0 0 10px #000000; }
+            95% { opacity: 1; transform: translateX(-50%) scale(1.0); filter: blur(0px); }
+            100% { opacity: 0; transform: translateX(-50%) scale(1.5); filter: blur(10px); visibility: hidden; }
+        }
+
+        #mobile-exit-btn { position: absolute; top: 15px; right: 15px; left: auto; transform: none; background: rgba(0, 0, 0, 0.8); border: 2px solid #ff3333; color: #ff3333; padding: 8px 25px; font-weight: 900; font-family: monospace; font-size: 16px; border-radius: 4px; pointer-events: auto; cursor: pointer; z-index: 9999999; display: none; text-shadow: 0 0 5px rgba(255,51,51,0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        #mobile-exit-btn:active { background: rgba(255, 51, 51, 0.3); }
+
+        #mobile-controls { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99999; }
+        #move-zone { position: absolute; top: 0; left: 0; width: 50%; height: 100%; pointer-events: auto; z-index: 999999; background: transparent; -webkit-tap-highlight-color: transparent; touch-action: none; }
+        #touch-look-zone { position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: auto; z-index: 999999; background: transparent; -webkit-tap-highlight-color: transparent; touch-action: none; }
+        
+        #joystick-visual-bg { position: absolute; width: 120px; height: 120px; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; pointer-events: none; opacity: 0; z-index: 999998; transition: opacity 0.2s; }
+        #joystick-knob { position: absolute; top: 35px; left: 35px; width: 50px; height: 50px; background: rgba(255,255,255,0.4); border-radius: 50%; pointer-events: none; }
+        
+        .mobile-btn { position: absolute; background: rgba(0,0,0,0.6); border: 2px solid rgba(255,255,255,0.3); color: white; border-radius: 50%; font-weight: 900; font-size: 12px; pointer-events: auto; display: flex; flex-direction: column; justify-content: center; align-items: center; user-select: none; transition: 0.1s; letter-spacing: 1px; z-index: 9999999; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+        .mobile-btn:active { background: rgba(255,255,255,0.4); transform: scale(0.9); }
+        
+        #btn-fire { bottom: 60px; right: 40px; width: 80px; height: 80px; border-color: #ff3333; background: rgba(255,51,51,0.2); font-size: 14px;}
+        #btn-aim { bottom: 155px; right: 40px; width: 65px; height: 65px; border-color: #3388ff; background: rgba(51,136,255,0.2); }
+        #btn-jump { bottom: 60px; right: 135px; width: 65px; height: 65px; }
+        #btn-reload { bottom: 135px; right: 120px; width: 55px; height: 55px; font-size: 10px; border-color: #ffaa00; background: rgba(255,170,0,0.2); }
+        
+        .zombie-btn { width: 42px; height: 42px; font-size: 10px; top: 25px; }
+        #btn-nade { right: 130px; border-color: #00ff00; background: rgba(0,255,0,0.2); }
+        #btn-c4 { right: 180px; border-color: #ff5500; background: rgba(255,85,0,0.2); }
+        #btn-det { right: 230px; border-color: #ff0000; background: rgba(255,0,0,0.4); } 
+        #btn-mine { right: 280px; border-color: #ff00ff; background: rgba(255,0,255,0.2); }
+        
+        #btn-spd { left: 95px !important; right: auto !important; border-color: #aa00ff; background: rgba(170,0,255,0.2); }
+        #btn-inv { left: 145px !important; right: auto !important; border-color: #00ffff; background: rgba(0,255,255,0.2); }
+
+        @media (max-width: 850px), (max-height: 450px) {
+            #stats-panel { display: none; }
+            .hud-bottom-left { bottom: 110px; left: 10px; padding: 10px; transform: scale(0.75); transform-origin: bottom left; z-index: 9999999; }
+            .hud-bottom-right { bottom: 230px; right: 10px; padding: 10px; transform: scale(0.75); transform-origin: bottom right; z-index: 9999999; }
+            
+            #weapon-bar { bottom: 5px; transform: translateX(-50%) scale(0.85); gap: 4px; padding-bottom: 2px; max-width: 250px; overflow-x: auto; pointer-events: auto; }
+            
+            #scoreboard { top: 5px; padding: 5px 10px; transform: translateX(-50%) scale(0.75); white-space: nowrap; }
+            #zombie-inventory { transform: scale(0.65); transform-origin: top left; top: 100px; left: 10px; z-index: 9999999; }
+        }
+
+        /* THE FIX: Replaced strict centering with top-alignment and padding for perfect mobile scrolling */
+        #mainMenuOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(20,20,20,0.7) 0%, rgba(5,5,5,0.98) 100%); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: flex-start; z-index: 20; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+        .menu-screen { min-height: 100%; display: none; flex-direction: column; justify-content: flex-start; align-items: center; padding: 60px 8% 100px 8%; box-sizing: border-box; animation: slideIn 0.4s ease; }
+        .menu-screen.active { display: flex; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+
+        #pauseScreen, #respawnScreen, #gameOverScreen, #settingsScreen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 99999999; display: none; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(8px); pointer-events: auto; }
+
+        .production-logo { max-width: 180px; height: auto; margin-bottom: -5px; filter: drop-shadow(0 0 8px rgba(255,255,255,0.15)); }
+        .credits-footer { margin-top: 40px; width: 100%; color: #888; font-size: 12px; font-family: monospace; letter-spacing: 1px; text-align: left; text-transform: uppercase; line-height: 1.6; }
+        .credits-footer a { color: #00ff00; font-weight: bold; text-decoration: none; }
+
+        .game-title { font-size: clamp(40px, 8vw, 80px); font-weight: 900; margin: 0; letter-spacing: -2px; text-transform: uppercase; text-shadow: 4px 4px 0 rgba(255,51,51,0.5); }
+        .callsign-input { background: rgba(0,0,0,0.5); border: 1px solid #444; border-left: 4px solid #00ff00; color: #00ff00; font-family: monospace; font-size: 18px; padding: 15px; width: 250px; margin-bottom: 20px; outline: none; text-transform: uppercase; letter-spacing: 2px; transition: border-color 0.3s; }
+        
+        .ui-label { color: #aaa; font-size: 12px; margin-bottom: 5px; font-weight: bold; letter-spacing: 1px; text-align: left; width: 285px; }
+        .flex-container { display: flex; gap: 10px; margin-bottom: 15px; width: 285px; }
+        .sel-btn { flex: 1; background: rgba(0,0,0,0.5); color: #888; border: 1px solid #444; padding: 12px 5px; cursor: pointer; text-transform: uppercase; font-weight: bold; font-size: 12px; transition: 0.2s; border-radius: 3px; text-align: center;}
+        .sel-btn.active { color: #fff; }
+        .mode-btn[data-mode="ffa"].active { border-color: #ffaa00; background: rgba(255,170,0,0.2); }
+        .mode-btn[data-mode="zombies"].active { border-color: #aa00ff; background: rgba(170,0,255,0.2); }
+        .diff-btn[data-diff="easy"].active { border-color: #3388ff; background: rgba(51,136,255,0.2); }
+        .diff-btn[data-diff="medium"].active { border-color: #ffaa00; background: rgba(255,170,0,0.2); }
+        .diff-btn[data-diff="hard"].active { border-color: #ff3333; background: rgba(255,51,51,0.2); }
+
+        .menu-btn { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 18px 25px; font-size: 14px; font-weight: 800; text-align: center; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.2s; width: 285px; margin-bottom: 10px; border-radius: 3px; pointer-events: auto;}
+        .menu-btn.primary { border-left: 4px solid #ff3333; background: rgba(255,51,51,0.1); }
+        
+        input[type=range] { -webkit-appearance: none; width: 285px; background: transparent; margin-bottom: 30px; pointer-events: auto;}
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #00ff00; cursor: pointer; margin-top: -8px; box-shadow: 0 0 10px #00ff00; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #444; border-radius: 2px; }
+        .settings-val { color: #00ff00; font-family: monospace; font-size: 16px; float: right; }
+    </style>
+</head>
+<body>
+    
+    <div id="hud">
+        <div id="scoreboard">
+            <div id="red-score">WAVE 1</div>
+            <div id="timer">10:00</div>
+            <div id="blue-score">0 KILLS</div>
+        </div>
+        
+        <div id="boss-warning">GIANT INFECTED APPROACHING</div>
+        
+        <div id="leaderboard"><div class="lb-title">RACE TO 50 KILLS</div><div id="lb-list"></div></div>
+        
+        <div id="mobile-exit-btn">PAUSE</div>
+
+        <div id="zombie-inventory">
+            <div class="lb-title" style="border-color:#00ff00;">TACTICAL GEAR</div>
+            <div class="inv-row"><span style="color:#22ff22">GRENADE (G)</span><span class="inv-val" id="inv-nade">3</span></div>
+            <div class="inv-row"><span style="color:#aaaaaa">C4 BOMB (C)</span><span class="inv-val" id="inv-c4">1</span></div>
+            <div class="inv-row"><span style="color:#ff5555">MINES   (V)</span><span class="inv-val" id="inv-mine">2</span></div>
+            <div class="inv-row" style="margin-top:15px; border:none;"><span style="color:#aa00ff">SPEED:</span><span class="inv-val" style="color:#aa00ff" id="inv-speed">OFF</span></div>
+            <div class="inv-row" style="border:none;"><span style="color:#00ffff">INVIS:</span><span class="inv-val" style="color:#00ffff" id="inv-invis">OFF</span></div>
+            <div class="inv-row" style="border:none; margin-top:10px;"><span style="color:#ffaa00">COINS:</span><span class="inv-val" style="color:#ffaa00" id="inv-coin">0</span></div>
+        </div>
+
+        <div id="stats-panel"><div id="hud-name">GUEST</div><div class="stat-line">KILLS: <span class="stat-val" id="hud-kills">0</span></div><div class="stat-line">BEST: <span class="stat-val" id="hud-best">0</span></div></div>
+        
+        <div id="kill-feed"></div>
+        
+        <div id="crosshair">+</div>
+
+        <div class="hud-bottom-left"><div class="hp-label">Armor Integrity</div><div class="hp-bar-bg"><div id="hp-bar-fill"></div></div></div>
+        
+        <div id="weapon-bar">
+            <div class="weapon-slot unlocked active" id="slot-0" onclick="window.gameSwitchWeapon(0)">
+                <div class="slot-key">1</div><div class="slot-emoji" style="font-size: 18px;">🔫</div><div class="slot-name">PIST</div>
+            </div>
+            <div class="weapon-slot unlocked" id="slot-1" onclick="window.gameSwitchWeapon(1)">
+                <div class="slot-key">2</div><div class="slot-emoji" style="font-size: 18px;">🧨</div><div class="slot-name">AR</div>
+            </div>
+            <div class="weapon-slot unlocked" id="slot-2" onclick="window.gameSwitchWeapon(2)">
+                <div class="slot-key">3</div><div class="slot-emoji" style="font-size: 18px;">💥</div><div class="slot-name">SHOT</div>
+            </div>
+            <div class="weapon-slot unlocked" id="slot-3" onclick="window.gameSwitchWeapon(3)">
+                <div class="slot-key">4</div><div class="slot-emoji" style="font-size: 18px;">🔭</div><div class="slot-name">SNIP</div>
+            </div>
+        </div>
+
+        <div class="hud-bottom-right"><div id="weapon-name">Assault Rifle</div><div class="ammo-status" id="ammo-count">30 / 30 AMMO</div></div>
+    </div>
+
+    <div id="mobile-controls">
+        <div id="move-zone"></div>
+        <div id="touch-look-zone"></div>
+        
+        <div id="joystick-visual-bg"><div id="joystick-knob"></div></div>
+        
+        <div class="mobile-btn" id="btn-fire"><span style="font-size: 24px;">🔥</span>FIRE</div>
+        <div class="mobile-btn" id="btn-aim"><span style="font-size: 18px;">🎯</span>AIM</div>
+        <div class="mobile-btn" id="btn-jump"><span style="font-size: 18px;">⬆️</span>JUMP</div>
+        <div class="mobile-btn" id="btn-reload"><span style="font-size: 14px;">🔄</span>RLD</div>
+        
+        <div class="mobile-btn zombie-btn" id="btn-nade"><span style="font-size: 14px;">💣</span>NADE</div>
+        <div class="mobile-btn zombie-btn" id="btn-c4"><span style="font-size: 14px;">🧨</span>C4</div>
+        <div class="mobile-btn zombie-btn" id="btn-det"><span style="font-size: 14px;">💥</span>DET</div>
+        <div class="mobile-btn zombie-btn" id="btn-mine"><span style="font-size: 14px;">🕳️</span>MINE</div>
+        
+        <div class="mobile-btn zombie-btn" id="btn-spd"><span style="font-size: 14px;">⚡</span>SPD</div>
+        <div class="mobile-btn zombie-btn" id="btn-inv"><span style="font-size: 14px;">👻</span>INV</div>
+    </div>
+
+    <div id="pauseScreen">
+        <h1 class="game-title" style="margin-bottom: 5px;">GAME PAUSED</h1>
+        <p style="color: #aaa; margin-bottom: 40px; font-family: monospace; letter-spacing: 2px; text-align: center;">(MATCH STILL RUNNING IN BACKGROUND)</p>
+        <button class="menu-btn primary" id="btn-resume">Resume Match</button>
+        <button class="menu-btn" onclick="openSettings('pause')">Settings</button>
+        <button class="menu-btn" onclick="window.location.href=window.location.pathname" style="border-left-color: #888;">Quit to Main Menu</button>
+    </div>
+
+    <div id="settingsScreen">
+        <h1 class="game-title" style="margin-bottom: 40px; color: #00ff00; text-shadow: 4px 4px 0 rgba(0,255,0,0.2);">SETTINGS</h1>
+        <div class="ui-label">CAMERA SENSITIVITY <span class="settings-val" id="sens-val">1.0x</span></div>
+        <input type="range" id="sensSlider" min="0.1" max="3.0" step="0.1" value="1.0">
+        <button class="menu-btn primary" onclick="closeSettings()" style="margin-top: 20px;">Apply & Back</button>
+    </div>
+
+    <div id="respawnScreen"><h1 style="font-size: clamp(30px, 8vw, 60px); text-transform: uppercase; color: red;">Killed In Action</h1><p style="font-size: 20px;">Respawning...</p></div>
+    
+    <div id="gameOverScreen"><h1 id="victoryText" style="font-size: clamp(40px, 8vw, 80px); text-transform: uppercase;">MATCH OVER</h1><div style="font-size: 30px; margin: 10px 0;">YOUR RANK: <span id="finalRankText" style="color: #ffaa00; font-weight: bold;">1st</span></div><p id="winnerNameText" style="font-size: 20px; color: #aaa;">WINNER: ALPHA</p><p id="finalKillsText" style="font-size: 24px; color: #00ff00; margin-top: 10px; font-family: monospace;">YOUR KILLS: 0</p>
+        <button class="menu-btn primary" onclick="location.reload()" style="margin-top: 30px;">Play Again</button>
+    </div>
+
+    <div id="mainMenuOverlay">
+        <div id="mainScreen" class="menu-screen active">
+            <img src="adityaproductionlogo.png" alt="Logo" class="production-logo" onerror="this.style.display='none'">
+            <h1 class="game-title">Boxie Strike</h1>
+            <h2 id="current-mode-display" style="color: #ffaa00; text-align: left; letter-spacing: 3px; font-weight: 900; margin-top: 0; width: 285px;">HARDCORE FFA</h2>
+            <input type="text" id="playerNameInput" class="callsign-input" placeholder="ENTER NAME..." maxlength="12" autocomplete="off">
+            <div class="ui-label">CHANGE GAME MODE:</div>
+            <div class="flex-container">
+                <button class="sel-btn mode-btn active" id="mode-ffa" data-mode="ffa">Hardcore FFA</button>
+                <button class="sel-btn mode-btn" id="mode-zombies" data-mode="zombies">Zombie Survival</button>
+            </div>
+            <div id="diff-section">
+                <div class="ui-label">DIFFICULTY:</div>
+                <div class="flex-container">
+                    <button class="sel-btn diff-btn" id="diff-easy" data-diff="easy">Easy</button>
+                    <button class="sel-btn diff-btn active" id="diff-medium" data-diff="medium">Medium</button>
+                    <button class="sel-btn diff-btn" id="diff-hard" data-diff="hard">Hard</button>
+                </div>
+            </div>
+            <button id="btn-fullscreen" class="menu-btn" style="display:none;" onclick="enterFullscreen()">ENTER FULLSCREEN</button>
+            <button class="menu-btn" onclick="openSettings('main')" style="border-left-color: #00ff00;">Settings</button>
+            <button id="playButton" class="menu-btn primary">START HARDCORE FFA</button>
+            <div class="credits-footer">
+                THIS GAME IS FULLY MADE BY <a href="https://www.adityadivte.com" target="_blank">ADITYA DIVTE PRODUCTION</a><br>
+                &copy; 2026 ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+    
+    <script>
+        let gameActive = false; window.currentKills = 0; 
+        let bestKills = localStorage.getItem('voxel_best_kills') || 0;
+        document.getElementById('hud-best').innerText = bestKills;
+
+        window.gameSensitivity = parseFloat(localStorage.getItem('voxel_sensitivity')) || 1.0;
+        const sensSlider = document.getElementById('sensSlider');
+        const sensVal = document.getElementById('sens-val');
+        sensSlider.value = window.gameSensitivity;
+        sensVal.innerText = window.gameSensitivity.toFixed(1) + "x";
+
+        sensSlider.addEventListener('input', (e) => {
+            window.gameSensitivity = parseFloat(e.target.value);
+            sensVal.innerText = window.gameSensitivity.toFixed(1) + "x";
+            localStorage.setItem('voxel_sensitivity', window.gameSensitivity);
+            if (window.fpsControls) window.fpsControls.pointerSpeed = window.gameSensitivity;
+        });
+
+        let settingsOrigin = 'main'; 
+        window.openSettings = function(origin) {
+            settingsOrigin = origin;
+            if (origin === 'main') document.getElementById('mainScreen').classList.remove('active');
+            if (origin === 'pause') document.getElementById('pauseScreen').style.display = 'none';
+            document.getElementById('settingsScreen').style.display = 'flex';
+        };
+
+        window.closeSettings = function() {
+            document.getElementById('settingsScreen').style.display = 'none';
+            if (settingsOrigin === 'main') document.getElementById('mainScreen').classList.add('active');
+            if (settingsOrigin === 'pause') document.getElementById('pauseScreen').style.display = 'flex';
+        };
+
+        const nameInput = document.getElementById('playerNameInput');
+        nameInput.value = localStorage.getItem('voxel_player_name') || '';
+        nameInput.addEventListener('input', () => { localStorage.setItem('voxel_player_name', nameInput.value.trim()); });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        window.gameMode = urlParams.get('mode') === 'zombies' ? 'zombies' : 'ffa';
+        window.gameDifficulty = localStorage.getItem('voxel_difficulty') || 'medium';
+
+        document.getElementById('mode-' + window.gameMode).classList.add('active');
+        document.getElementById('diff-' + window.gameDifficulty).classList.add('active');
+
+        const playBtn = document.getElementById('playButton');
+        const modeTitle = document.getElementById('current-mode-display');
+        
+        if (window.gameMode === 'zombies') {
+            document.getElementById('diff-section').style.display = 'none';
+            document.getElementById('leaderboard').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('red-score').style.display = 'block';
+            document.getElementById('blue-score').style.display = 'block';
+            document.getElementById('zombie-inventory').style.display = 'block';
+            
+            document.querySelectorAll('.slot-emoji').forEach(el => el.style.display = 'none');
+            
+            playBtn.innerText = "START ZOMBIE SURVIVAL";
+            playBtn.style.borderLeftColor = "#aa00ff";
+            playBtn.style.backgroundColor = "rgba(170,0,255,0.1)";
+            modeTitle.innerText = "ZOMBIE SURVIVAL";
+            modeTitle.style.color = "#aa00ff";
+        } else {
+            playBtn.innerText = "START HARDCORE FFA";
+            playBtn.style.borderLeftColor = "#ffaa00";
+            playBtn.style.backgroundColor = "rgba(255,170,0,0.1)";
+            modeTitle.innerText = "HARDCORE FFA";
+            modeTitle.style.color = "#ffaa00";
+        }
+
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const selectedMode = e.target.getAttribute('data-mode');
+                if (selectedMode !== window.gameMode) window.location.href = '?mode=' + selectedMode;
+            });
+        });
+
+        document.querySelectorAll('.diff-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                window.gameDifficulty = e.target.getAttribute('data-diff');
+                localStorage.setItem('voxel_difficulty', window.gameDifficulty);
+            });
+        });
+
+        window.startGameUI = function(isMobile) {
+            gameActive = true;
+            let name = nameInput.value.trim() || 'GUEST';
+            document.getElementById('hud-name').innerText = name.toUpperCase();
+            window.currentKills = 0;
+            document.getElementById('hud-kills').innerText = window.currentKills;
+            
+            if (isMobile) { 
+                document.getElementById('mobile-controls').style.display = 'block'; 
+                document.getElementById('mobile-exit-btn').style.display = 'block'; 
+                document.getElementById('stats-panel').style.display = 'none';
+                
+                if (window.gameMode !== 'zombies') {
+                    document.getElementById('zombie-inventory').style.display = 'none';
+                    document.querySelectorAll('.zombie-btn').forEach(btn => btn.style.display = 'none');
+                }
+            }
+            
+            document.getElementById('mainMenuOverlay').style.display = 'none';
+            document.getElementById('hud').style.display = 'block';
+        };
+
+        window.addPlayerKill = function() {
+            window.currentKills++; document.getElementById('hud-kills').innerText = window.currentKills;
+            if(window.currentKills > bestKills) { bestKills = window.currentKills; localStorage.setItem('voxel_best_kills', bestKills); document.getElementById('hud-best').innerText = bestKills; }
+        };
+
+        window.addKillFeedEvent = function(killerName, killerTeam, victimName, victimTeam, isHeadshot) {
+            const feed = document.getElementById('kill-feed');
+            if (!feed) return;
+            
+            const item = document.createElement('div');
+            item.className = 'kill-feed-item';
+            
+            const kColor = (killerTeam === 'blue') ? '#00ff00' : '#ff3333';
+            const vColor = (victimTeam === 'blue') ? '#00ff00' : '#ff3333';
+            const icon = isHeadshot ? '🎯' : '🔫';
+            
+            item.innerHTML = `<span style="color: ${kColor}">${killerName}</span> <span style="font-size:16px;">${icon}</span> <span style="color: ${vColor}">${victimName}</span>`;
+            
+            feed.appendChild(item);
+            
+            setTimeout(() => {
+                if (item.parentNode === feed) {
+                    feed.removeChild(item);
+                }
+            }, 5000);
+        };
+
+        window.gameSwitchWeapon = function(index) { 
+            if(window.switchWeaponFromJS) window.switchWeaponFromJS(index); 
+        };
+        
+        window.updateWeaponUI = function(index) {
+            document.querySelectorAll('#weapon-bar .weapon-slot').forEach((slot, i) => {
+                if (i === index) slot.classList.add('active');
+                else slot.classList.remove('active');
+            });
+            
+            setTimeout(() => {
+                const activeSlot = document.querySelector('.weapon-slot.active');
+                const wBar = document.getElementById('weapon-bar');
+                if (activeSlot && wBar) {
+                    const scrollLeft = activeSlot.offsetLeft - (wBar.offsetWidth / 2) + (activeSlot.offsetWidth / 2);
+                    wBar.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                }
+            }, 50);
+        };
+        
+        document.addEventListener('pointerlockchange', () => {
+            const isRespawning = document.getElementById('respawnScreen').style.display === 'flex';
+            if (gameActive && !document.pointerLockElement && !isRespawning && !/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                document.getElementById('pauseScreen').style.display = 'flex';
+            }
+        });
+
+        const mobileExit = document.getElementById('mobile-exit-btn');
+        if (mobileExit) {
+            mobileExit.addEventListener('touchstart', (e) => {
+                e.preventDefault(); 
+                document.getElementById('pauseScreen').style.display = 'flex';
+            }, {passive: false});
+            
+            mobileExit.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                document.getElementById('pauseScreen').style.display = 'flex';
+            });
+        }
+
+        document.getElementById('pauseScreen').addEventListener('mousedown', (e) => { e.stopPropagation(); });
+        document.getElementById('pauseScreen').addEventListener('touchstart', (e) => { e.stopPropagation(); }, {passive: false});
+
+        document.getElementById('btn-resume').addEventListener('click', () => {
+            document.getElementById('pauseScreen').style.display = 'none';
+            if (!/Android|iPhone|iPad/i.test(navigator.userAgent)) document.body.requestPointerLock();
+        });
+    </script>
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const enginePath = window.gameMode === 'zombies' ? './zombie_game.js' : './game.js';
+        
+        window.enterFullscreen = function() {
+            const el = document.documentElement;
+            if (el.requestFullscreen) el.requestFullscreen();
+            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+            if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(()=>{});
+        };
+
+        if (isMobile) document.getElementById('btn-fullscreen').style.display = 'block';
+
+        let loadedEngine = null;
+        
+        import(enginePath + "?v=" + Date.now())
+            .then(gameEngine => { loadedEngine = gameEngine; })
+            .catch(err => { 
+                console.error(err); 
+                alert("CRITICAL CRASH!\n\n" + err.message + "\n\nPress F12 to check your Console for the exact line number!"); 
+            });
+
+        document.getElementById('playButton').addEventListener('click', () => {
+            if (isMobile) window.enterFullscreen();
+            if (!loadedEngine) return alert("Game is still loading... Please wait 2 seconds and click again!");
+            if (!isMobile) document.body.requestPointerLock();
+            window.startGameUI(isMobile);
+            if (loadedEngine.bootMatch) loadedEngine.bootMatch(isMobile, window.gameDifficulty);
+        });
+    </script>
+</body>
+</html>

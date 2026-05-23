@@ -1,0 +1,503 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Finax PRO - Pricing | Aditya Divte Production</title>
+    <meta name="description" content="Upgrade to Finax PRO for the ultimate 'Done-For-You' property management experience.">
+
+    <script>
+        // Use root base so all your CSS and images load properly from the root directory
+        if (window.location.protocol !== "file:" && window.location.pathname !== "/404.html") {
+            const base = document.createElement('base');
+            base.href = '/';
+            document.head.prepend(base);
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    
+    <link id="dynamic-favicon" rel="icon" type="image/png">
+
+    <style>
+        :root {
+            --finax-purple: #673AB7;
+            --pro-dark-1: #121212;
+            --pro-dark-2: #2A2A3D;
+            --pro-card-dark: #1E1E2C;
+            --pro-amber: #fbbf24;
+            --pro-amber-glow: rgba(251, 191, 36, 0.5);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px; /* Space for the sticky coming soon bar */
+            overflow-x: hidden;
+        }
+
+        /* --- VIP DARK HEADER --- */
+        .pro-header {
+            background: linear-gradient(to bottom, var(--pro-dark-1), var(--pro-dark-2));
+            padding: 120px 20px 100px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(103, 58, 183, 0.2);
+            position: relative;
+        }
+
+        .pro-icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fcd34d, #ea580c);
+            box-shadow: 0 0 20px var(--pro-amber-glow);
+            margin-bottom: 20px;
+        }
+
+        .pro-icon-container i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .pro-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .pro-title span {
+            color: var(--pro-amber);
+            letter-spacing: 1px;
+        }
+
+        .pro-subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 15px auto 0;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* --- PRICING CARDS --- */
+        .pricing-container {
+            max-width: 900px;
+            margin: -50px auto 40px; /* Pulls cards up into the dark header */
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card.recommended {
+            background: var(--pro-card-dark);
+            border: 2px solid var(--pro-amber);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.recommended:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .best-value-badge {
+            display: inline-block;
+            background: var(--pro-amber);
+            color: #0f172a;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card.recommended .plan-name {
+            color: #cbd5e1;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .pricing-card.recommended .plan-price {
+            color: white;
+        }
+
+        .plan-suffix {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        /* --- FEATURES LIST --- */
+        .features-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .features-heading {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #94a3b8;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .feature-item {
+            display: flex;
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            border-color: #e2e8f0;
+        }
+
+        .feature-icon-box {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: rgba(251, 191, 36, 0.15); 
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .feature-icon-box i {
+            font-size: 1.5rem;
+            color: #d97706; 
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 8px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .feature-text p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* --- PURE CSS ANIMATED STICKY BOTTOM BAR --- */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 600px;
+            background: linear-gradient(to right, #1E1E1E, #3A3A3A);
+            padding: 18px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(251, 191, 36, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            box-sizing: border-box;
+            
+            /* Custom CSS Animation */
+            opacity: 0;
+            animation: slideUpBar 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+
+        @keyframes slideUpBar {
+            0% {
+                opacity: 0;
+                bottom: -50px;
+                transform: translateX(-50%) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                bottom: 20px;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        .sticky-bottom-bar i {
+            color: var(--pro-amber);
+            font-size: 1.4rem;
+            margin-right: 12px;
+        }
+
+        .sticky-bottom-bar span {
+            color: var(--pro-amber);
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .pro-title { font-size: 2.2rem; }
+            .pricing-container {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+            }
+            .pricing-card.recommended {
+                transform: scale(1);
+            }
+            .pricing-card.recommended:hover {
+                transform: translateY(-5px);
+            }
+            .feature-item {
+                flex-direction: column;
+            }
+            .feature-icon-box {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services/index.html">Services</a>
+                <a href="contact-us/index.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="pro-header">
+            <div class="container" data-aos="fade-down" data-aos-duration="800">
+                <div class="pro-icon-container">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h1 class="pro-title">Finax <span>PRO</span></h1>
+                <p class="pro-subtitle">The ultimate "Done-For-You" experience.<br>You sit back and count your money. We handle the rest.</p>
+            </div>
+        </section>
+
+        <section class="pricing-container">
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="plan-name">Monthly</div>
+                <div class="plan-price">â‚¹999 <span class="plan-suffix">/mo</span></div>
+            </div>
+
+            <div class="pricing-card recommended" data-aos="fade-up" data-aos-delay="200">
+                <div class="best-value-badge">BEST VALUE</div>
+                <div class="plan-name">Yearly</div>
+                <div class="plan-price">â‚¹9,999 <span class="plan-suffix">/yr</span></div>
+            </div>
+        </section>
+
+        <section class="features-wrapper">
+            <h3 class="features-heading" data-aos="fade-right">What You Get</h3>
+
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon-box">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Dedicated Collection Agent</h4>
+                    <p>Tired of begging for rent? Our professional agents will call your tenants to collect payments on your behalf.</p>
+                </div>
+            </div>
+
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="150">
+                <div class="feature-icon-box">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Hassle-Free Police Verification</h4>
+                    <p>Never step foot in a police station again. Our reps handle the complete background check and verification process.</p>
+                </div>
+            </div>
+
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon-box">
+                    <i class="fas fa-file-signature"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Ironclad Rental Agreements</h4>
+                    <p>Sleep peacefully. We provide legally vetted, bulletproof rental agreements to guarantee your property's safety.</p>
+                </div>
+            </div>
+
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="250">
+                <div class="feature-icon-box">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Auto-WhatsApp Reminders</h4>
+                    <p>Our system automatically sends polite, perfectly timed rent due-date reminders straight to their WhatsApp.</p>
+                </div>
+            </div>
+
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon-box">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Auto-WhatsApp Receipts</h4>
+                    <p>The moment a payment is recorded, a beautiful digital receipt is instantly sent to the tenant.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="sticky-bottom-bar">
+        <i class="fas fa-hourglass-half"></i>
+        <span>COMING SOON</span>
+    </div>
+
+    <footer class="footer" style="padding-bottom: 100px;"> <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="text-gradient">ADITYA DIVTE</span><br>PRODUCTION</h3>
+                    <p>A multidisciplinary production house delivering excellence in Games, Film, Architecture Visualization, and Technology across India.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services/index.html">Our Services</a></li>
+                        <li><a href="contact-us/index.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services/index.html">Game Development</a></li>
+                        <li><a href="services/index.html">Cinematic VFX</a></li>
+                        <li><a href="services/index.html">Web & App Dev</a></li>
+                        <li><a href="services/index.html">VR Construction</a></li>
+                        <li><a href="services/index.html">College ERP</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope icon"></i> support@adityadivte.com</p>
+                    <p><i class="fas fa-phone icon"></i> +91 935614061</p>
+                    <p><i class="fas fa-map-marker-alt icon"></i> India</p>
+                    <div style="margin-top: 15px; display: flex; gap: 15px;">
+                        <a href="https://instagram.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#1DA1F2'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-twitter"></i></a>                         <a href="https://www.linkedin.com/in/aditya-divte-227438383" target="_blank" style="color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#0077B5'" onmouseout="this.style.color='var(--text-muted)'"><i class="fab fa-linkedin"></i></a>                     </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="clgedu-terms-conditions/index.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Terms & Conditions</a>
+                    <a href="erp-pricing/index.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Pricing Plan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current folder path ignoring the base tag
+            let currentPath = window.location.href;
+            if(!currentPath.endsWith('/')) {
+                currentPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+            }
+            const logoPath = currentPath + '/AppLogo.png';
+            
+            document.getElementById('dynamic-favicon').href = logoPath;
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 800,
+                easing: 'ease-out-cubic',
+            });
+        });
+        window.addEventListener('load', function () {
+            AOS.refresh();
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+
+
+

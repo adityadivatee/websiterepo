@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divte Vault - Download & Review | Softonic Style</title>
+    <meta name="description" content="Divte Vault by Aditya Divte Production is an enterprise-grade security sandbox. Safely install and play game repacks in a highly optimized, isolated cage.">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../image/Main_Branch_png_logo.png" type="image/png">
+    
+    <style>
+        body { background-color: #f3f4f6; color: #333; font-family: 'Inter', sans-serif; }
+        
+        .softonic-nav { background: #fff; border-bottom: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .softonic-nav .nav-brand { color: #1f2937; }
+        .softonic-nav .nav-links a { color: #4b5563; }
+        .softonic-nav .nav-links a:hover { color: #10b981; }
+
+        .app-container {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 40px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #fafafa;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+        }
+        .app-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .app-info { flex: 1; }
+        .app-title { font-size: 2.5rem; font-weight: 700; color: #111827; margin-bottom: 5px; }
+        .app-dev { color: #6b7280; font-size: 1rem; margin-bottom: 15px; font-weight: 500; }
+        
+        .app-rating { color: #f59e0b; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        .rating-text { color: #4b5563; font-size: 0.9rem; margin-left: 10px; font-weight: 600; }
+
+        .app-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; min-width: 250px; }
+        .btn-download {
+            background: #10b981;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            width: 100%;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .btn-download:hover { background: #059669; color: white; }
+        .download-meta { font-size: 0.8rem; color: #6b7280; text-align: center; }
+
+        .app-body {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .app-header { flex-direction: column; align-items: center; text-align: center; }
+            .app-actions { align-items: center; width: 100%; }
+            .app-body { grid-template-columns: 1fr; }
+        }
+
+        .content-section h2 { font-size: 1.8rem; color: #1f2937; margin-bottom: 20px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; }
+        .content-section p { font-size: 1.05rem; line-height: 1.7; color: #4b5563; margin-bottom: 20px; }
+
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .pros, .cons { background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; }
+        .pros h3 { color: #10b981; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .cons h3 { color: #ef4444; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .pros ul, .cons ul { list-style: none; padding: 0; }
+        .pros ul li, .cons ul li { margin-bottom: 10px; font-size: 0.95rem; color: #374151; display: flex; align-items: flex-start; gap: 10px; }
+        .pros ul li::before { content: "âœ“"; color: #10b981; font-weight: bold; }
+        .cons ul li::before { content: "âœ•"; color: #ef4444; font-weight: bold; }
+
+        .sidebar h3 { font-size: 1.2rem; color: #111827; margin-bottom: 15px; }
+        .specs-list { list-style: none; padding: 0; }
+        .specs-list li { display: flex; flex-direction: column; margin-bottom: 15px; border-bottom: 1px solid #f3f4f6; padding-bottom: 10px; }
+        .spec-label { font-size: 0.85rem; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .spec-value { font-size: 1rem; color: #1f2937; font-weight: 500; }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar softonic-nav">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <img src="../image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../products/" class="active">Products</a>
+                <a href="../courses/">Courses</a>
+                <a href="../contact-us/">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- Hero Header -->
+        <header class="app-header">
+            <div class="app-icon">
+                <img src="../assets/logo.png" alt="Divte Vault Logo">
+            </div>
+            <div class="app-info">
+                <h1 class="app-title">Divte Vault</h1>
+                <div class="app-dev">by Aditya Divte Production</div>
+                <div class="app-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="rating-text">5.0 (2,105 reviews)</span>
+                </div>
+            </div>
+            <div class="app-actions">
+                <a href="https://divtevault.adityadivte.com" target="_blank" class="btn-download">
+                    <i class="fas fa-download"></i> Visit Vault
+                </a>
+                <div class="download-meta">100% Secure Sandbox Environment</div>
+            </div>
+        </header>
+
+        <!-- Body -->
+        <div class="app-body">
+            <div class="main-content">
+                <section class="content-section">
+                    <h2>What is Divte Vault?</h2>
+                    <p>
+                        Divte Vault is an enterprise-grade security sandbox designed to provide military-grade isolation for your applications. It creates a highly optimized, isolated cage where you can safely install and execute untrusted software.
+                    </p>
+                    <p>
+                        Built with powerful Sandboxie and Hyper-V virtualization engines, Divte Vault intercepts all file system and registry modifications, ensuring your host system remains entirely pristine. It is particularly renowned in the gaming community for safely installing massive game repacks while retaining native 3D acceleration for full FPS performance.
+                    </p>
+                </section>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h3><i class="fas fa-thumbs-up"></i> Pros</h3>
+                        <ul>
+                            <li>Total host system protection against malware</li>
+                            <li>Native 3D acceleration support for gaming</li>
+                            <li>Hardware spoofing prevents fingerprinting</li>
+                            <li>Perfect for large, untrusted game repacks</li>
+                            <li>Advanced Sandboxie & Hyper-V engines</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-thumbs-down"></i> Cons</h3>
+                        <ul>
+                            <li>Requires Windows Professional/Enterprise for Hyper-V features</li>
+                            <li>Slight learning curve for configuring isolated file paths</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <h3>App Specs</h3>
+                <ul class="specs-list">
+                    <li>
+                        <span class="spec-label">License</span>
+                        <span class="spec-value">Premium / Free Trial</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">OS</span>
+                        <span class="spec-value">Windows 10 / 11 (64-bit)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Developer</span>
+                        <span class="spec-value">Aditya Divte Production</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Key Tech</span>
+                        <span class="spec-value">Hyper-V, Sandboxie</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Security</span>
+                        <span class="spec-value">Hardware Spoofing, Registry Virtualization</span>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Minimal Softonic-style Footer -->
+    <footer style="background: #1f2937; padding: 40px 20px; text-align: center; color: #9ca3af; font-family: 'Inter', sans-serif;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;"><a href="https://instagram.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#1DA1F2'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-twitter"></i></a><a href="https://www.linkedin.com/in/aditya-divte-227438383" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#0077B5'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-linkedin"></i></a></div>
+            <p>&copy; 2026 Aditya Divte Production. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="../js/script.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Finax - Smart Property Management | Aditya Divte Production</title>
+    <meta name="description" content="Manage your buildings, tenants, and rent payments seamlessly with Finax.">
+
+    <script>
+        // 1. RESTORED: Your original script to fix the Header and Footer CSS!
+        if (window.location.protocol !== "file:" && window.location.pathname !== "/404.html") {
+            const base = document.createElement('base');
+            base.href = '/';
+            document.head.prepend(base);
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link id="dynamic-favicon" rel="icon" type="image/png">
+
+    <style>
+        :root {
+            --finax-purple: #673AB7;
+            --finax-dark: #311B92;
+            --finax-light: #EDE7F6;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- MODERN HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1.2;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--finax-light);
+            color: var(--finax-purple);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(103, 58, 183, 0.2);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--finax-purple), #9C27B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* App Download Buttons */
+        .store-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-store {
+            display: flex;
+            align-items: center;
+            background: #111827;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-store:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .btn-store i {
+            font-size: 1.8rem;
+            margin-right: 12px;
+        }
+
+        .btn-store-text span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+        }
+
+        .btn-store-text strong {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* --- FLOATING APP LOGO --- */
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .app-logo-main {
+            width: 280px;
+            height: auto;
+            border-radius: 50px; 
+            box-shadow: 0 30px 60px rgba(103, 58, 183, 0.3), 
+                        inset 0 0 0 1px rgba(255,255,255,0.5);
+            animation: float 6s ease-in-out infinite;
+            background: white;
+        }
+
+        .logo-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--finax-purple);
+            filter: blur(80px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.2; }
+            100% { transform: scale(1.1); opacity: 0.4; }
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features-section {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(103, 58, 183, 0.08);
+            border-color: var(--finax-light);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--finax-light);
+            color: var(--finax-purple);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-title { font-size: 3rem; }
+            .store-buttons { justify-content: center; }
+            .app-logo-main { width: 220px; margin-top: 30px; }
+            .logo-glow { width: 220px; height: 220px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services/index.html">Services</a>
+                <a href="contact-us/index.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="padding-top-nav">
+        <section class="hero-section" id="vanta-bg-app">
+            <div class="hero-container">
+                
+                <div class="hero-text" data-aos="fade-right">
+                    <div class="hero-badge">Now in Beta Testing</div>
+                    <h1 class="hero-title">Property Management <br><span>Made Simple.</span></h1>
+                    <p class="hero-desc">
+                        Finax is the all-in-one pocket assistant for landlords. Track rent, verify tenants, store documents securely on Google Drive, and automate WhatsApp reminders instantly.
+                    </p>
+                    
+                    <div class="store-buttons">
+                        <a href="#" class="btn-store">
+                            <i class="fab fa-google-play"></i>
+                            <div class="btn-store-text">
+                                <span>Get it on</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                        
+                        <a href="https://adityadivte.com/finax/pricing" class="btn-store" style="background: #673AB7;">
+                            <i class="fas fa-crown"></i>
+                            <div class="btn-store-text">
+                                <span>View Our</span>
+                                <strong>Pricing Plan</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="logo-glow"></div>
+                    <img id="dynamic-app-logo" class="app-logo-main" alt="Finax App Logo">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Everything You Need</h2>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Run your properties like a professional production.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon"><i class="fas fa-building"></i></div>
+                        <h3>Building Organization</h3>
+                        <p>Manage multiple buildings and rooms. Instantly check which rooms are vacant, occupied, or pending maintenance.</p>
+                    </div>
+
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                        <h3>Rent & Bill Tracking</h3>
+                        <p>Generate monthly bills including custom light and water charges. Track partial payments automatically.</p>
+                    </div>
+
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon"><i class="fab fa-whatsapp"></i></div>
+                        <h3>WhatsApp Reminders</h3>
+                        <p>No more awkward phone calls. Send automated, beautifully formatted rent reminders and receipts directly to WhatsApp.</p>
+                    </div>
+
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon"><i class="fab fa-google-drive"></i></div>
+                        <h3>Google Drive Backup</h3>
+                        <p>Your data is yours. Securely backup your entire SQLite database and tenant KYC documents directly to your personal Drive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="text-gradient">ADITYA DIVTE</span><br>PRODUCTION</h3>
+                    <p>A multidisciplinary production house delivering excellence in Games, Film, Architecture Visualization, and Technology across India.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services/index.html">Our Services</a></li>
+                        <li><a href="contact-us/index.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services/index.html">Game Development</a></li>
+                        <li><a href="services/index.html">Cinematic VFX</a></li>
+                        <li><a href="services/index.html">Web & App Dev</a></li>
+                        <li><a href="services/index.html">VR Construction</a></li>
+                        <li><a href="services/index.html">College ERP</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope icon"></i> support@adityadivte.com</p>
+                    <p><i class="fas fa-phone icon"></i> +91 935614061</p>
+                    <p><i class="fas fa-map-marker-alt icon"></i> India</p>
+                    <div style="margin-top: 15px; display: flex; gap: 15px;">
+                        <a href="https://instagram.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/aditya_divte" target="_blank" style="color: #9ca3af; font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#1DA1F2'" onmouseout="this.style.color='#9ca3af'"><i class="fab fa-twitter"></i></a>                         <a href="https://www.linkedin.com/in/aditya-divte-227438383" target="_blank" style="color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#0077B5'" onmouseout="this.style.color='var(--text-muted)'"><i class="fab fa-linkedin"></i></a>                     </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="clgedu-terms-conditions/index.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Terms & Conditions</a>
+                    <a href="erp-pricing/index.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Pricing Plan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current folder path ignoring the base tag
+            let currentPath = window.location.href;
+            if(!currentPath.endsWith('/')) {
+                currentPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+            }
+            const logoPath = currentPath + '/AppLogo.png';
+            
+            // Set the Favicon and the Hero Logo to the exact local file
+            document.getElementById('dynamic-favicon').href = logoPath;
+            document.getElementById('dynamic-app-logo').src = logoPath;
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (document.getElementById('vanta-bg-app')) {
+                // Using a subtle white/gray net with purple connections
+                VANTA.NET({
+                    el: "#vanta-bg-app",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x673AB7, // Finax Purple lines
+                    backgroundColor: 0xf8fafc, // Matches the body background
+                    points: 12.00,
+                    maxDistance: 22.00,
+                    spacing: 18.00,
+                    showDots: true
+                });
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 800,
+                easing: 'ease-out-cubic',
+            });
+        });
+        window.addEventListener('load', function () {
+            AOS.refresh();
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+
+
+
