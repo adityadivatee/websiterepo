@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Insights & Tech Articles | Aditya Divte Production</title>
+    <meta name="description"
+        content="Read in-depth technical guides, software architecture case studies, and Unreal Engine insights by Aditya Divte Production.">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../image/Main_Branch_png_logo.png" type="image/png">
+    <!-- Google AdSense Verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7478205924985762" crossorigin="anonymous"></script>
+    <style>
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+        }
+        .tag-pill {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .tag-blue { background: rgba(37,99,235,0.1); color: var(--accent-primary); }
+        .tag-cyan { background: rgba(6,182,212,0.1); color: var(--accent-secondary); }
+        .tag-purple { background: rgba(79,70,229,0.1); color: var(--accent-tertiary); }
+        .tag-green { background: rgba(16,185,129,0.1); color: #10b981; }
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <img src="../image/Main_Branch_png_logo.png" alt="Aditya Divte Production Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">ADITYA DIVTE</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About Us</a>
+                <a href="../products/">Products</a>
+                <a href="../articles/" class="active">Articles</a>
+                <a href="../services/">Services</a>
+                <a href="../contact-us/">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="padding-top-nav">
+        <!-- Hero Header -->
+        <section class="section-padding" style="padding-bottom: 30px; text-align: center;">
+            <div class="container">
+                <span class="tag-pill tag-blue">Knowledge Base & Research</span>
+                <h1 style="font-size: 3.2rem; margin-bottom: 15px;">
+                    Engineering <span class="text-gradient">Insights</span>
+                </h1>
+                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 750px; margin: 0 auto;">
+                    Explore architectural deep-dives, Unreal Engine tutorials, security research, and UI engineering case studies straight from our lab.
+                </p>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="container" style="max-width: 1050px; margin-bottom: 70px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+                <!-- Article 1: Divte Vault -->
+                <article class="article-card">
+                    <div>
+                        <span class="tag-pill tag-blue">Security & Systems</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> October 2026</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h2 style="font-size: 1.45rem; margin-bottom: 12px; color: var(--text-light); line-height: 1.4;">
+                            <a href="virtualization-security-sandboxing.html" style="color: inherit; text-decoration: none;">
+                                Virtualization & Security Sandboxing: Inside Divte Vault's Engine
+                            </a>
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                            How hardware spoofing, kernel-level isolation, and Hyper-V sandboxes safeguard testing environments from zero-day exploits and malicious software telemetry.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="virtualization-security-sandboxing.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem; width: fit-content;">
+                            Read Full Article <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2: Unreal Engine 5 -->
+                <article class="article-card">
+                    <div>
+                        <span class="tag-pill tag-cyan">Game Dev & VFX</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> October 2026</span>
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                        </div>
+                        <h2 style="font-size: 1.45rem; margin-bottom: 12px; color: var(--text-light); line-height: 1.4;">
+                            <a href="unreal-engine-virtual-production.html" style="color: inherit; text-decoration: none;">
+                                Real-Time 3D & Virtual Production with Unreal Engine 5
+                            </a>
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                            Harnessing Nanite geometric micro-poly streaming, Lumen dynamic global illumination, and live in-camera visual effects (ICVFX) for cinematic storytelling.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="unreal-engine-virtual-production.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem; width: fit-content;">
+                            Read Full Article <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3: Webecon SVG UI -->
+                <article class="article-card">
+                    <div>
+                        <span class="tag-pill tag-purple">Frontend Engineering</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> October 2026</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h2 style="font-size: 1.45rem; margin-bottom: 12px; color: var(--text-light); line-height: 1.4;">
+                            <a href="modern-web-ui-svg-icons.html" style="color: inherit; text-decoration: none;">
+                                Modern Web UI Architecture: Building High-Performance SVG Icon Systems
+                            </a>
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                            The technical blueprint behind Webecon: creating scalable, animateable, and accessible SVG icon frameworks for high-density modern web apps.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="modern-web-ui-svg-icons.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem; width: fit-content;">
+                            Read Full Article <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 4: Cloud ERP Architecture -->
+                <article class="article-card">
+                    <div>
+                        <span class="tag-pill tag-green">Enterprise Architecture</span>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> October 2026</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                        <h2 style="font-size: 1.45rem; margin-bottom: 12px; color: var(--text-light); line-height: 1.4;">
+                            <a href="cloud-native-erp-architecture.html" style="color: inherit; text-decoration: none;">
+                                Cloud-Native ERP Architecture for Educational Institutions
+                            </a>
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                            Designing zero-downtime database models, automated fee auditing, and real-time attendance pipelines in modern College ERP applications like DivteERP.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="cloud-native-erp-architecture.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem; width: fit-content;">
+                            Read Full Article <i class="fas fa-arrow-right" style="margin-left: 6px;"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><span class="text-gradient">ADITYA DIVTE</span><br>PRODUCTION</h3>
+                    <p>A multidisciplinary production house delivering excellence in Games, Film, Architecture Visualization, and Technology across India.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../products/">Products</a></li>
+                        <li><a href="../articles/">Articles</a></li>
+                        <li><a href="../contact-us/">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal & Policies</h4>
+                    <ul>
+                        <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms & Conditions</a></li>
+                        <li><a href="../erp-pricing/">Pricing Plan</a></li>
+                        <li><a href="../founder.html">Founder Profile</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope icon"></i> support@adityadivte.com</p>
+                    <p><i class="fas fa-phone icon"></i> +91 935614061</p>
+                    <p><i class="fas fa-map-marker-alt icon"></i> India</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya Divte Production. All Rights Reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="../privacy-policy.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Privacy Policy</a>
+                    <a href="../terms.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">Terms & Conditions</a>
+                    <a href="../about.html" style="color: var(--text-muted); font-size: 0.85rem; margin: 0 10px;">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
