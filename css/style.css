@@ -1106,8 +1106,33 @@ img {
     .container {
         padding: 0 1rem;
     }
+    :root {
+        --nav-height: 64px;
+    }
+
+    .desktop-br {
+        display: none;
+    }
+
+    .hero {
+        min-height: 100svh;
+        min-height: 100vh;
+        padding-top: calc(var(--nav-height) + 16px);
+        padding-bottom: 30px;
+        align-items: center;
+        overflow: visible;
+    }
+
     .hero-content h1 {
-        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+        line-height: 1.15;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
     }
     .section-padding {
         padding: 60px 0;
@@ -1164,16 +1189,29 @@ img {
     }
 
     .hero-stats {
-        flex-wrap: wrap;
-        gap: 1.25rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-item {
+        min-width: 0;
     }
 
     .stat-item h3 {
-        font-size: 1.8rem;
+        font-size: clamp(1.15rem, 4.2vw, 1.5rem);
+        line-height: 1.25;
+        margin-bottom: 2px;
+        white-space: nowrap;
     }
 
     .stat-item p {
-        font-size: 0.8rem;
+        font-size: clamp(0.65rem, 2.2vw, 0.75rem);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .floating-badge {
@@ -1198,7 +1236,18 @@ img {
     }
 
     .hero-cta {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .hero-cta .btn {
+        flex: 1;
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        text-align: center;
     }
 
     .section-title {
